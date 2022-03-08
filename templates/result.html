@@ -5,36 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>greenfood</title>
+    <title>result</title>
 </head>
 <body>
     <header>
         <h1>식사하기 전 영양성분을 알아보세요~</h1>
         <img src="static/images/logo.svg">
     </header>
-    
 
     <article>
-        <div class="func">
-            <button>이미지 업로드</button>
-            <button>실행</button>
+        <div class="left">
+            객체 인식 후 이미지
             <br>
             <img src="static/images/main_image.jpeg" height="500" width="600">
         </div>
-        
+
+        <div class="right">
+            검출된 음식 목록
+            <br>
+            list
+
+            <br>
+            1일 기준 영양성분
+            <br>
+            블라블라
+
+
+        </div>
         
 
-        <aside>도움말: 이미지를 업로드 후 실행버튼을 누르세요</aside>
-        
 
     </article>
 
-    
 
-    <footer>
-        주의사항: ...
-        DB 출처 : 한국 영양 데이터베이스
-    </footer>
 
 </body>
 </html>
