@@ -17,7 +17,10 @@
         <div class="left">
             객체 인식 후 이미지
             <br>
-            <img src="static/images/main_image.jpeg" height="500" width="600">
+            
+            {% if True %}
+            <img src="{{ url_for('static', filename=Img)}}" height="500" width="600">
+            {% endif %}
         </div>
 
         <div class="right">

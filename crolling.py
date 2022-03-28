@@ -11,7 +11,7 @@ driver = webdriver.Chrome(options=options)
 
 driver.get("https://www.google.co.kr/imghp?hl=ko&ogbl")
 elem = driver.find_element_by_name("q")
-name = '됭경모치'
+name = '돈가스'
 if not os.path.exists(name):
     os.makedirs(name)
 

@@ -16,8 +16,11 @@
 
     <article>
         <div class="func">
-            <button>이미지 업로드</button>
-            <button>실행</button>
+            <form action="/" method="POST", enctype="multipart/form-data">
+                사진 : <input type="file" name="file">
+                <input type="submit" value="전송하기">
+            </form>
+
             <br>
             <img src="static/images/main_image.jpeg" height="500" width="600">
         </div>
