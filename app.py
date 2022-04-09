@@ -3,6 +3,8 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 import pymysql
 import os
+import detect
+import cv2
 conn = pymysql.connect(host='localhost', user="root", password="qsdrwe159", db='food_data', charset='utf8')
 
 
@@ -32,6 +34,12 @@ def index():
         Img = request.files['file']
         Img.save(os.path.join(app.config['UPLOAD_FOLDER'], Img.filename))  # 이미지 서버에 저장
         
+        detect.run(source='./static/images/' + Img.filename, weights="./best.pt", save_txt=True) # 음식 객체 인식
+        
+        drt = os.listdir('./runs/detect')[-1] # 사진 출력하는 과정
+        file_source = './runs/detect/' + drt +'/'+ Img.filename
+        file_destination = './static/images/' 
+        os.replace(file_source, file_destination + Img.filename)
         
         
         
@@ -48,4 +56,7 @@ def index():
 def result():
     return render_template('result.html')
 if __name__ == '__main__':
+    
+
+    
     app.run()
