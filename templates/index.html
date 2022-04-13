@@ -1,43 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>greenfood</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Greenfood</title>
+	<link rel="stylesheet" href="./static/css/common.css">
 </head>
+
 <body>
-    <header>
-        <h1>식사하기 전 영양성분을 알아보세요~</h1>
-        <img src="static/images/logo.svg">
-    </header>
-    
+	<div class="container">
+		<header class="header">
+			<div class="w_inner">
+				<!-- 로고 -->
+				<h1 class="logo_img">
+					<a href="index.html" class="link_home">
+						<img src="./static/images/img_logo.jpg" alt="그린푸드" class="img_g">
+					</a>
+				</h1>
 
-    <article>
-        <div class="func">
-            <form action="/" method="POST", enctype="multipart/form-data">
-                사진 : <input type="file" name="file">
-                <input type="submit" value="전송하기">
-            </form>
+				<nav class="wrap_gnb">
+					<ul class="list_gnb">
+						<li><a href="#none">로그인</a></li>
+						<li><a href="#none">로그아웃</a></li>
+						<li><a href="#none">마이페이지</a></li>
+						<li><a href="#none">운동추천</a></li>
+					</ul>
+				</nav>
 
-            <br>
-            <img src="static/images/main_image.jpeg" height="500" width="600">
-        </div>
-        
-        
+			</div>
+		</header>
+		<main class="contents">
+			<div class="w_inner">
+				<div class="wrap_upload">
+					<h2 class="area_guide">
+						식사하기 전<br>영양성분을 알아보세요!
+					</h2>
+					<div class="guide_upload">
+						<strong class="tit_guide">
+							어떻게 사용하나요?
+						</strong>
+						<p class="guide_txt">이미지를 업로드 후 실행 버튼을 누르세요.</p>
+					</div>
 
-        <aside>도움말: 이미지를 업로드 후 실행버튼을 누르세요</aside>
-        
+					<div class="form_search">
+						<form action="/" method="POST", enctype="multipart/form-data">
+							<fieldset>
+								<legend class="blind">이미지 검색</legend>
 
-    </article>
+								<input type="file" name="file" id="">
+								<!-- <button type="submit" class=" btn_search">실행</button> -->
+								<button type="submit" class=" btn_search">실행</button>
+								<!-- <a href="result" class="btn_search">실행</a> -->
+							</fieldset>
+						</form>
+					</div>
 
-    
+					<div class="guide_img">
+						<span class="txt_img">예시</span>
+						<div class="thumb_img">
+							<img src="./static/images/img_food.jpg" alt="음식사진" class="img_g">
+						</div>
+						<div class="wrap_progress">
+							<dl>
+								<div class="group_progress type1">
+									<dt>탄수화물</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" style="width:50%"></span>
+										</span>
+										<span class="num_percent">50%</span>
+									</dd>
+								</div>
+								<div class="group_progress type2">
+									<dt>지방</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" style="width:20%"></span>
+										</span>
+										<span class="num_percent">20%</span>
+									</dd>
+								</div>
+								<div class="group_progress type4">
+									<dt>단백질</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" style="width:36%"></span>
+										</span>
+										<span class="num_percent">36%</span>
+									</dd>
+								</div>
+							</dl>
+						</div>
+					</div>
 
-    <footer>
-        주의사항: ...
-        DB 출처 : 한국 영양 데이터베이스
-    </footer>
+				</div>
 
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="w_inner">
+				<dl class="list_desc">
+					<div class="area_desc">
+						<dt>주의사항:</dt>
+						<dd>내용 입력</dd>
+					</div>
+					<div class="area_desc">
+						<dt>DB 출처:</dt>
+						<dd>내용 입력</dd>
+					</div>
+					<div class="area_desc">
+						<dt>정보 관리 정책:</dt>
+						<dd>내용 입력</dd>
+					</div>
+				</dl>
+			</div>
+		</footer>
+	</div>
 </body>
+
 </html>

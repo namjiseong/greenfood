@@ -1,46 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>result</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Greenfood</title>
+	<link rel="stylesheet" href="./static/css/common.css">
 </head>
+
 <body>
-    <header>
-        <h1>식사하기 전 영양성분을 알아보세요~</h1>
-        <img src="static/images/logo.svg">
-    </header>
+	<div class="container">
+		<header class="header">
+			<div class="w_inner">
+				<!-- 로고 -->
+				<h1 class="logo_img">
+					<a href="index.html" class="link_home">
+						<img src="./static/images/img_logo.jpg" alt="그린푸드" class="img_g">
+					</a>
+				</h1>
 
-    <article>
-        <div class="left">
-            객체 인식 후 이미지
-            <br>
-            
-            {% if True %}
-            <img src="{{ url_for('static', filename=Img)}}" height="500" width="600">
-            {% endif %}
-        </div>
+				<nav class="wrap_gnb">
+					<ul class="list_gnb">
+						<li><a href="#none">로그인</a></li>
+						<li><a href="#none">로그아웃</a></li>
+						<li><a href="#none">마이페이지</a></li>
+						<li><a href="#none">운동추천</a></li>
+					</ul>
+				</nav>
 
-        <div class="right">
-            검출된 음식 목록
-            <br>
-            list
+			</div>
+		</header>
+		<main class="contents">
+			<div class="w_inner">
+				<h2 class="blind">검색 결과 상세</h2>
+				<div class="wrap_result">
+					<div class="result_img">
+						<div class="txt_img">검색 이미지</div>
+						<div class="thumb_area">
+							
+							{% if True %}
+							<img src="{{ url_for('static', filename=Img)}}" alt="음식" class="img_g">
+							{% endif %}
+						</div>
+					</div>
 
-            <br>
-            1일 기준 영양성분
-            <br>
-            블라블라
-
-
-        </div>
-        
-
-
-    </article>
-
-
-
+					<div class="search_detail">
+						<form action="">
+							<fieldset>
+								<legend class="blind">음식 검색하기</legend>
+								<div class="wrap_row">
+									<input type="text" class="inp_search" placeholder="검색해서 직접 추가">
+									<button type="submit" class="btn_search">검색</button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="result_detail">
+						<div class="area_detail">
+							<h3 class="tit_detail"><span>검출된 음식 목록</span></h3>
+							<ul class="list_food">
+								<li>
+									<span class="name_food">된장찌개</span>
+									<button class="btn_add">&#43;<span class="blind">추가</span></button>
+									<button class="btn_remove">&#215;<span class="blind">삭제</span></button>
+								</li>
+								<li>
+									<span class="name_food">김치</span>
+									<button class="btn_add">&#43;<span class="blind">추가</span></button>
+									<button class="btn_remove">&#215;<span class="blind">삭제</span></button>
+								</li>
+								<li>
+									<span class="name_food">밥</span>
+									<button class="btn_add">&#43;<span class="blind">추가</span></button>
+									<button class="btn_remove">&#215;<span class="blind">삭제</span></button>
+								</li>
+							</ul>
+						</div>
+						<div class="area_detail">
+							<h3 class="tit_detail"><span>1일 기준 영양성분</span></h3>
+							<div class="wrap_progress">
+								<dl>
+									<div class="group_progress type3">
+										<dt>총 칼로리</dt>
+										<dd>
+											<span class="area_progress">
+												<!-- width값으로 그래프 조절합니다. -->
+												<span class="bar_progress" style="width:50%"></span>
+											</span>
+											<span class="num_percent">50%</span>
+										</dd>
+									</div>
+									<div class="group_progress type1">
+										<dt>탄수화물</dt>
+										<dd>
+											<span class="area_progress">
+												<span class="bar_progress" style="width:60%"></span>
+											</span>
+											<span class="num_percent">60%</span>
+										</dd>
+									</div>
+									<div class="group_progress type2">
+										<dt>지방</dt>
+										<dd>
+											<span class="area_progress">
+												<span class="bar_progress" style="width:30%"></span>
+											</span>
+											<span class="num_percent">30%</span>
+										</dd>
+									</div>
+									<div class="group_progress type4">
+										<dt>단백질</dt>
+										<dd>
+											<span class="area_progress">
+												<span class="bar_progress" style="width:70%"></span>
+											</span>
+											<span class="num_percent">70%</span>
+										</dd>
+									</div>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="w_inner">
+				<dl class="list_desc">
+					<div class="area_desc">
+						<dt>주의사항:</dt>
+						<dd>내용 입력</dd>
+					</div>
+					<div class="area_desc">
+						<dt>DB 출처:</dt>
+						<dd>내용 입력</dd>
+					</div>
+					<div class="area_desc">
+						<dt>정보 관리 정책:</dt>
+						<dd>내용 입력</dd>
+					</div>
+				</dl>
+			</div>
+		</footer>
+	</div>
 </body>
+
 </html>

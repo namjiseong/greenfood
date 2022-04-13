@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	text-align: left;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1.4;
+}
+ol, ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+a:active {
+	color: #000;
+}
+button {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+html {
+	font-size: 16px;
+	color: #333;
+	font-family: 'Noto Sans KR', sans-serif;
+	letter-spacing: -0.03em;
+}
+/* layout style */
+.container {
+	min-width: 1024px;
+}
+.w_inner {
+	width: 1024px;
+	margin: 0 auto;
+}
+.blind {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	clip: rect(0 0 0 0);
+	margin: -1px;
+	overflow: hidden;
+}
+.img_g {
+	display: block;
+	width: 100%;
+}
+
+/* header */
+.header {
+	border-bottom: 1px solid #e5e5e5;
+}
+.header .w_inner {
+	padding-top: 10px;
+	position: relative;
+}
+.header .logo_img {
+	width: 305px;
+	margin-left: -20px;
+}
+.header .logo_img .link_home {
+	display: block;
+	padding: 10px 20px;
+}
+.wrap_gnb {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+}
+.wrap_gnb .list_gnb {
+	display: flex;
+	font-size: 18px;
+}
+.wrap_gnb .list_gnb li {
+	margin-left: 30px;
+}
+.wrap_gnb .list_gnb a {
+	display: block;
+	padding: 20px;
+	font-weight: bold;
+}
+
+.contents {
+	margin-top: 120px;
+	min-height: 60vh;
+}
+.area_guide {
+	padding-bottom: 45px;
+	font-size: 42px;
+	font-weight: 700;
+	color: #009549;
+}
+.btn_search {
+	padding: 8px 15px 6px;
+	font-size: 18px;
+	font-weight: 500;
+	color: #fff;
+	border-radius: 8px;
+	background-color: #009549;
+}
+
+/* 이미지 업로드 */
+.wrap_upload {
+	position: relative;
+	padding-right: 50%;
+	box-sizing: border-box;
+}
+.guide_upload {
+	text-align: center;
+}
+.guide_upload .tit_guide {
+	display: block;
+	font-size: 32px;
+	font-weight: 500;
+}
+.guide_upload .guide_txt {
+	margin-top: 46px;
+	font-size: 20px;
+}
+.form_search {
+	margin-top: 61px;
+	text-align: center;
+}
+.guide_img {
+	position: absolute;
+	top: 36px;
+	right: 80px;
+	width: 40%;
+}
+.guide_img .txt_img {
+	display: block;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+.guide_img .thumb_img {
+	overflow: hidden;
+	height: 306px;
+	width: 410px;
+	border-radius: 8px;
+}
+.guide_img .thumb_img  img {
+	object-fit: cover;
+	height: 100%;
+}
+.guide_img .wrap_progress {
+	position: absolute;
+	bottom: -80px;
+	right: -80px;
+	width: 80%;
+}
+
+/* 검색 결과 */
+.wrap_result {
+	position: relative;
+	padding-left: 450px;
+	/* padding-top: 20px; */
+}
+.wrap_result .result_img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 400px;
+}
+.wrap_result .result_img .txt_img {
+	display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.wrap_result .search_detail .wrap_row {
+	display: flex;
+}
+.wrap_result .search_detail .inp_search {
+	flex-grow: 1;
+	margin-right: 10px;
+	height: 39px;
+	border: 1px solid #009549;
+	border-radius: 8px;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+.result_detail {
+	margin-top: 40px;
+}
+.result_detail .area_detail + .area_detail {
+	margin-top: 50px;
+}
+.result_detail .area_detail .tit_detail {
+	margin-bottom: 24px;
+	font-size: 24px;
+	color: #009549;
+	text-align: center;
+}
+.result_detail .area_detail .tit_detail span {
+	position: relative;
+	display: inline-block;
+}
+.result_detail .area_detail .tit_detail span::before {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	left: -10px;
+	right: -10px;
+	height: 18px;
+	background-color: rgba(172,199,41,0.1);
+}
+.result_detail .list_food {
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #ddd;
+}
+.result_detail .list_food li + li {
+	border-top: 1px solid #eee;
+}
+.result_detail .list_food li {
+	position: relative;
+	padding: 16px 100px 16px 10px;
+	box-sizing: border-box;
+}
+.result_detail .list_food .name_food {
+	font-size: 18px;
+	font-weight: 500;
+}
+.result_detail .list_food .btn_add,
+.result_detail .list_food .btn_remove {
+	position: absolute;
+	top: 50%;
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	line-height: 30px;
+	font-size: 30px;
+	color: #888;
+}
+.result_detail .list_food .btn_add {
+	right: 60px;
+}
+.result_detail .list_food .btn_remove {
+	right: 10px;
+}
+/* 프로그래스 바 공통 */
+.wrap_progress {
+	overflow: hidden;
+	padding: 16px;
+	border-radius: 10px;
+	background-color: #fff;
+	box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+}
+.group_progress {
+	overflow: hidden;
+}
+.group_progress + .group_progress {
+	margin-top: 15px;
+}
+.group_progress dt {
+	float: left;
+	width: 24%;
+	clear: both;
+	font-weight: 700;
+	line-height: 30px;
+	color: #D84C6F;
+}
+.group_progress dd {
+	position: relative;
+	width: 76%;
+	padding-right: 40px;
+	float: left;
+	color: #D84C6F;
+	box-sizing: border-box;
+}
+.group_progress .area_progress {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	height: 30px;
+	border-radius: 5px;
+	background-color: #FFEAED;
+}
+.group_progress .area_progress .bar_progress {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background-color: #D84C6F;
+}
+.group_progress .num_percent {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	font-size: 14px;
+	font-weight: 500;
+	transform: translateY(-50%);
+}
+.group_progress.type1 dt,
+.group_progress.type1 dd {
+	color: #D84C6F;
+}
+.group_progress.type1  .area_progress .bar_progress {
+	background-color: #D84C6F;
+}
+.group_progress.type1 .area_progress {
+	background-color: #FFEAED;
+}
+
+.group_progress.type2 dt,
+.group_progress.type2 dd {
+	color: #4285F4;
+}
+.group_progress.type2  .area_progress .bar_progress {
+	background-color: #4285F4;
+}
+.group_progress.type2 .area_progress {
+	background-color: #D2E3FC;
+}
+
+.group_progress.type3 dt,
+.group_progress.type3 dd {
+	color: #1291D0;
+}
+.group_progress.type3  .area_progress .bar_progress {
+	background-color: #1291D0;
+}
+.group_progress.type3 .area_progress {
+	background-color: #E2F5FF;
+}
+
+.group_progress.type4 dt,
+.group_progress.type4 dd {
+	color: #E67701;
+}
+.group_progress.type4  .area_progress .bar_progress {
+	background-color: #E67701;
+}
+.group_progress.type4 .area_progress {
+	background-color: #FFECE2;
+}
+
+.group_progress.type5 dt,
+.group_progress.type5 dd {
+	color: #4D0DCE;
+}
+.group_progress.type5  .area_progress .bar_progress {
+	background-color: #4D0DCE;
+}
+.group_progress.type5 .area_progress {
+	background-color: #F1F0FF;
+}
+/* 푸터 */
+.footer {
+	margin-top: 100px;
+	border-top:1px solid #e5e5e5;
+	padding: 30px;
+}
+.footer .list_desc .area_desc {
+	margin-bottom: 6px;
+}
+.footer .list_desc .area_desc dt,
+.footer .list_desc .area_desc dd {
+	display: inline-block;
+}
+.footer .list_desc .area_desc dt {
+	margin-right: 5px;
+}

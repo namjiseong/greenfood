@@ -45,6 +45,7 @@ def index():
         
         return render_template('result.html', Img = 'images/'+Img.filename)
         ###
+    
         
       
     return render_template('index.html')
