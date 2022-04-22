@@ -176,7 +176,7 @@ def run(
                             'Whfaus' : '쫄면',
                             'WkaQhd' : '짬뽕',
                             'Wkwkdaus': '짜장면',
-                            'Wlaekfr': '찜닭',
+                            'Wlaekfr': '닭찜',
                             'aksen':'만두', 
                             'aksentrnr' : '만둣국',
                             'aksmfWhdancla': '마늘쫑무침', 
@@ -191,14 +191,14 @@ def run(
                             'clzlsRktm' : '치킨까스', 
                             'dhamfkdltm' : '오므라이스', 
                             'dhrtntntoffjem' : '옥수수샐러드', 
-                            'dhsenqndidsuawkd' : '온두부_양념장', 
+                            'dhsenqndidsuawkd' : '두부조림', 
                             'dhwlddjqhRdma' : '오징어볶음', 
                             'didthddltmvm' : '양송이스프', 
                             'djanrqhrdma' : '어묵볶음', 
-                            'dnehd' : '우동', 
+                            'dnehd' : '우동(일식)', 
                             'doghqkrqhRdma' : '애호박볶음', 
                             'dyrnfmxm' : '요구르트', 
-                            'ehdrmfkdeod' : '동그랑땡', 
+                            'ehdrmfkdeod' : '동그랑땡(육원전)', 
                             'ehlswkdWlro' : '된장찌개', 
                             'ehowlqnfrhrl' : '돼지불고기', 
                             'ehowlrhrlrlaclqhRdma' : '돼지고기김치볶음', 
@@ -215,9 +215,9 @@ def run(
                             'gktehrm' : '핫도그', 
                             'gmralqkq' : '흑미밥', 
                             'goacothqhrdma' : '햄채소볶음', 
-                            'qhaehdancla' : '봄동무침', 
+                            'qhaehdancla' : '배추나물무침', 
                             'qhrdmaqkq' : '볶음밥', 
-                            'qkq' : '밥', 
+                            'qkq' : '오곡밥', 
                             'qksksk' : '바나나', 
                             'qlqlaqkq' : '비빔밥', 
                             'qlqlarnrtn' : '비빔국수', 
@@ -228,14 +228,14 @@ def run(
                             'rPfksgnfkdl' : '계란후라이', 
                             'rbf' : '귤', 
                             'rhemddjxnlrla' : '고등어튀김', 
-                            'rhfhzp' : '고로케', 
+                            'rhfhzp' : '채소고로케', 
                             'rhrnakaktxkd' : '고구마맛탕', 
                             'rjawjdzhdqkq' : '검정콩밥', 
-                            'rkawkcoth' : '감자채소', 
+                            'rkawkcoth' : '감자채소볶음', 
                             'rkawkxkd' : '감자탕', 
                             'rkawkzmfhzpt' : '감자크로켓', 
                             'rkfclrndl' : '갈치구이', 
-                            'rkfqlrndl' : '갈비구이', 
+                            'rkfqlrndl' : '돼지갈비구이', 
                             'rlaclqhrdmaqkq' : '김치볶음밥', 
                             'rlacltrnr' : '김칫국', 
                             'rlaclwjs' : '김치전', 
@@ -243,15 +243,15 @@ def run(
                             'thejrthejr' : '소떡소떡', 
                             'thtpwlqhRdma' : '소세지볶음', 
                             'tjdnfdndb' : '서울우유', 
-                            'tlrQkdxnlrla' : '식빵튀김', 
+                            'tlrQkdxnlrla' : '식빵', 
                             'tlrmaclskanfancla' : '시금치나물무침', 
                             'tlrqkdxhtmxm' : '식빵토스트', 
                             'tnrwnskanfancla' : '숙주나물무침', 
                             'tnsenqnWlro' : '순두부찌개', 
                             'todtjsRktm' : '생선까스', 
-                            'toffjem' : '샐러드', 
+                            'toffjem' : '채소샐러드', 
                             'whalrla' : '조미김', 
-                            'wkdwhfla' : '장조림', 
+                            'wkdwhfla' : '메추리알 장조림', 
                             'wkqco' : '잡채', 
                             'wkqksqhRdma' : '자반볶음', 
                             'wpdbrqhRdma' : '제육볶음', 
@@ -262,12 +262,16 @@ def run(
                             'zkfpfkdltm' : '카레라이스', 
                             'zmfhdhktkd' : '크로와상'
                             }
+                        # DB 입력 요망
+                        # 딸기 단팥호빵 핫도그 바나나 계란후라이 귤 소떡소떡 서울우유 콘푸로스트 크로와상 자반볶음
                         array = ['z','z','z','z','z','z','z']
                         
                         for i in dicc:
                             array.append(dicc[i])
                             
-                            
+                        f = open('./food_name.txt', 'a', encoding="UTF-8")
+                        f.write(array[c] + '\n')
+                        f.close()
                         
                         
                         label = None if hide_labels else (names[c] if hide_conf else f'{array[c]} {conf:.2f}')
@@ -346,6 +350,9 @@ def parse_opt():
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     print_args(vars(opt))
     return opt
+
+def get_food_name(name):
+    return name
 
 
 def main(opt):

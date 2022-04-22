@@ -7,9 +7,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
+	
 </head>
 
 <body>
+	
 	<div class="container">
 		<header class="header">
 			<div class="w_inner">
@@ -59,7 +61,8 @@
 					<div class="result_detail">
 						<div class="area_detail">
 							<h3 class="tit_detail"><span>검출된 음식 목록</span></h3>
-							<ul class="list_food">
+							<ul class="list_food" id="abc">
+
 								<li>
 									<span class="name_food">된장찌개</span>
 									<button class="btn_add">&#43;<span class="blind">추가</span></button>
@@ -75,6 +78,7 @@
 									<button class="btn_add">&#43;<span class="blind">추가</span></button>
 									<button class="btn_remove">&#215;<span class="blind">삭제</span></button>
 								</li>
+
 							</ul>
 						</div>
 						<div class="area_detail">
@@ -85,37 +89,39 @@
 										<dt>총 칼로리</dt>
 										<dd>
 											<span class="area_progress">
-												<!-- width값으로 그래프 조절합니다. -->
-												<span class="bar_progress" style="width:50%"></span>
+												<!-- width값으로 그래프 조절합니다. style="width:{{kal}}%"-->
+												
+												<span class="bar_progress" style="width:50%" id="kal"></span> 
+												
 											</span>
-											<span class="num_percent">50%</span>
+											<span class="num_percent">{{kal}}%</span>
 										</dd>
 									</div>
 									<div class="group_progress type1">
 										<dt>탄수화물</dt>
 										<dd>
 											<span class="area_progress">
-												<span class="bar_progress" style="width:60%"></span>
+												<span class="bar_progress" style="width:60%" id='tan'></span>
 											</span>
-											<span class="num_percent">60%</span>
+											<span class="num_percent">{{tan}}%</span>
 										</dd>
 									</div>
 									<div class="group_progress type2">
 										<dt>지방</dt>
 										<dd>
 											<span class="area_progress">
-												<span class="bar_progress" style="width:30%"></span>
+												<span class="bar_progress" style="width:30%" id="ji"></span>
 											</span>
-											<span class="num_percent">30%</span>
+											<span class="num_percent">{{ji}}%</span>
 										</dd>
 									</div>
 									<div class="group_progress type4">
 										<dt>단백질</dt>
 										<dd>
 											<span class="area_progress">
-												<span class="bar_progress" style="width:70%"></span>
+												<span class="bar_progress" style="width:70%" id="dan"></span>
 											</span>
-											<span class="num_percent">70%</span>
+											<span class="num_percent">{{dan}}%</span>
 										</dd>
 									</div>
 								</dl>
@@ -144,6 +150,51 @@
 			</div>
 		</footer>
 	</div>
+	<script>
+		
+		
+		document.getElementById( 'kal' ).style.width = {{kal}} +'%';
+		document.getElementById( 'tan' ).style.width = {{tan}} +'%';
+		document.getElementById( 'dan' ).style.width = {{dan}} +'%';
+		document.getElementById( 'ji' ).style.width = {{ji}} +'%';
+		
+		function ad_food(food_name){
+			var li = document.createElement("li");
+
+			var span = document.createElement('span');
+			span.setAttribute('class', 'name_food');
+			span.innerHTML= food_name;
+			var bu1 = document.createElement('button');
+			bu1.setAttribute('class', "btn_add");
+			bu1.innerHTML='&#43;';
+			span_mini = document.createElement('span');
+			span_mini.setAttribute('class', 'blind');
+			span_mini.innerHTML = "추가";
+
+			var bu2 = document.createElement('button');
+			bu2.setAttribute('class', "btn_remove");
+			bu2.innerHTML ='&#215;';
+			span_mini2 = document.createElement('span');
+			span_mini2.setAttribute('class', "blind");
+			span_mini2.innerHTML = "삭제";
+			bu2.appendChild(span_mini2);
+			span.appendChild(bu2);
+
+
+			bu1.appendChild(span_mini);
+			span.appendChild(bu1);
+			li.appendChild(span);
+			document.getElementById("abc").appendChild(li);
+		}
+		
+		var list_f = {{ food_list|tojson }};
+		console.log(list_f)
+		for (let i = 0; i < list_f.length; i++) {
+			ad_food(list_f[i])
+			console.log(list_f[i]);
+		  }
+	</script>
+	
 </body>
 
 </html>
