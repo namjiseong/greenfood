@@ -7,7 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
-	
+	<script>
+		
+		var kal_list = {{ kal_list|tojson }};
+		var tan_list = {{ tan_list|tojson }};
+		var dan_list = {{ dan_list|tojson }};
+		var ji_list = {{ ji_list|tojson }};
+	</script>
 </head>
 
 <body>
@@ -63,22 +69,6 @@
 							<h3 class="tit_detail"><span>검출된 음식 목록</span></h3>
 							<ul class="list_food" id="abc">
 
-								<li>
-									<span class="name_food">된장찌개</span>
-									<button class="btn_add">&#43;<span class="blind">추가</span></button>
-									<button class="btn_remove">&#215;<span class="blind">삭제</span></button>
-								</li>
-								<li>
-									<span class="name_food">김치</span>
-									<button class="btn_add">&#43;<span class="blind">추가</span></button>
-									<button class="btn_remove">&#215;<span class="blind">삭제</span></button>
-								</li>
-								<li>
-									<span class="name_food">밥</span>
-									<button class="btn_add">&#43;<span class="blind">추가</span></button>
-									<button class="btn_remove">&#215;<span class="blind">삭제</span></button>
-								</li>
-
 							</ul>
 						</div>
 						<div class="area_detail">
@@ -94,7 +84,7 @@
 												<span class="bar_progress" style="width:50%" id="kal"></span> 
 												
 											</span>
-											<span class="num_percent">{{kal}}%</span>
+											<span class="num_percent" id="kal_p">{{kal}}%</span>
 										</dd>
 									</div>
 									<div class="group_progress type1">
@@ -103,7 +93,7 @@
 											<span class="area_progress">
 												<span class="bar_progress" style="width:60%" id='tan'></span>
 											</span>
-											<span class="num_percent">{{tan}}%</span>
+											<span class="num_percent" id="tan_p">{{tan}}%</span>
 										</dd>
 									</div>
 									<div class="group_progress type2">
@@ -112,7 +102,7 @@
 											<span class="area_progress">
 												<span class="bar_progress" style="width:30%" id="ji"></span>
 											</span>
-											<span class="num_percent">{{ji}}%</span>
+											<span class="num_percent" id="dan_p">{{ji}}%</span>
 										</dd>
 									</div>
 									<div class="group_progress type4">
@@ -121,7 +111,7 @@
 											<span class="area_progress">
 												<span class="bar_progress" style="width:70%" id="dan"></span>
 											</span>
-											<span class="num_percent">{{dan}}%</span>
+											<span class="num_percent" id="ji_p">{{dan}}%</span>
 										</dd>
 									</div>
 								</dl>
@@ -151,15 +141,26 @@
 		</footer>
 	</div>
 	<script>
+		var kal = {{kal}}
+		var tan = {{tan}}
+		var dan = {{dan}}
+		var ji = {{ji}}
 		
+		document.getElementById( 'kal' ).style.width = kal +'%';
+		document.getElementById( 'tan' ).style.width = tan +'%';
+		document.getElementById( 'dan' ).style.width = dan +'%';
+		document.getElementById( 'ji' ).style.width = ji +'%';
 		
-		document.getElementById( 'kal' ).style.width = {{kal}} +'%';
-		document.getElementById( 'tan' ).style.width = {{tan}} +'%';
-		document.getElementById( 'dan' ).style.width = {{dan}} +'%';
-		document.getElementById( 'ji' ).style.width = {{ji}} +'%';
-		
+		var list_f = {{ food_list|tojson }};
+		console.log(list_f)
+		for (let i = 0; i < list_f.length; i++) {
+			ad_food(list_f[i])
+			console.log(list_f[i]);
+		}
+
 		function ad_food(food_name){
 			var li = document.createElement("li");
+			li.setAttribute('id', food_name);
 
 			var span = document.createElement('span');
 			span.setAttribute('class', 'name_food');
@@ -174,6 +175,8 @@
 			var bu2 = document.createElement('button');
 			bu2.setAttribute('class', "btn_remove");
 			bu2.innerHTML ='&#215;';
+			bu2.setAttribute('onclick', 'de_food("'+food_name+'")');
+
 			span_mini2 = document.createElement('span');
 			span_mini2.setAttribute('class', "blind");
 			span_mini2.innerHTML = "삭제";
@@ -187,12 +190,61 @@
 			document.getElementById("abc").appendChild(li);
 		}
 		
-		var list_f = {{ food_list|tojson }};
-		console.log(list_f)
-		for (let i = 0; i < list_f.length; i++) {
-			ad_food(list_f[i])
-			console.log(list_f[i]);
-		  }
+		function de_food(food_name){
+			var target = document.getElementById(food_name);
+			var parent = target.parentElement; 
+			parent.removeChild(target);
+			var index = list_f.indexOf(food_name);
+
+			list_f = list_f.filter((element) => element !== food_name);
+			
+			kal_list.splice(index, 1);
+			dan_list.splice(index, 1);
+			tan_list.splice(index, 1);
+			ji_list.splice(index, 1);
+			var kal = 0;
+			for (let i = 0; i < kal_list.length; i++) {
+				kal += kal_list[i];
+			}
+			kal = Math.round(kal/2300 * 100) ;
+			document.getElementById( 'kal' ).style.width = kal+'%';
+			var tan = 0;
+			for (let i = 0; i < tan_list.length; i++) {
+				tan += tan_list[i];
+			}
+			tan = Math.round(tan/324 *100);
+			document.getElementById( 'tan' ).style.width = tan +'%';
+			var dan = 0;
+			for (let i = 0; i < dan_list.length; i++) {
+				dan += dan_list[i];
+			}
+			dan = Math.round(dan/55 * 100);
+			document.getElementById( 'dan' ).style.width = dan +'%';
+			var ji = 0;
+			for (let i = 0; i < ji_list.length; i++) {
+				ji += ji_list[i];
+			}
+			ji = Math.round(ji/54 * 100);
+			document.getElementById( 'ji' ).style.width = ji +'%';
+
+			console.log(kal);
+			console.log(tan);
+			console.log(dan);
+			console.log(ji);
+
+			document.getElementById('kal_p').innerHTML=kal + '%';
+			document.getElementById('tan_p').innerHTML=tan+'%';
+			document.getElementById('dan_p').innerHTML=dan+'%';
+			document.getElementById('ji_p').innerHTML=ji+'%';
+
+
+		}
+
+		
+		
+
+
+
 	</script>
 	
 </body>

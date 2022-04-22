@@ -78,7 +78,7 @@ def index():
         ji_p = int(round(sum(ji)/54, 2) * 100)
         print(ji_p)
         
-        return render_template('result.html', Img = 'images/'+Img.filename, kal=kal_p, tan=tan_p, dan=dan_p, ji=ji_p, food_list = food_list)
+        return render_template('result.html', Img = 'images/'+Img.filename, kal=kal_p, tan=tan_p, dan=dan_p, ji=ji_p, food_list = food_list, kal_list = kal, tan_list=tan, dan_list=dan, ji_list=ji)
         ###
     
         
