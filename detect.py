@@ -69,7 +69,7 @@ def run(
         project=ROOT / 'runs/detect',  # save results to project/name
         name='exp',  # save results to project/name
         exist_ok=False,  # existing project/name ok, do not increment
-        line_thickness=3,  # bounding box thickness (pixels)
+        line_thickness=5,  # bounding box thickness (pixels)
         hide_labels=False,  # hide labels
         hide_conf=False,  # hide confidences
         half=False,  # use FP16 half-precision inference
@@ -260,10 +260,14 @@ def run(
                             'zhdwhfla' : '콩조림', 
                             'zhsvnfhtmxm' : '콘푸로스트', 
                             'zkfpfkdltm' : '카레라이스', 
-                            'zmfhdhktkd' : '크로와상'
+                            'zmfhdhktkd' : '크로와상',
+                            
                             }
+                        #'ehlswkdrnr' : '된장찌개',
+                        #    'rpfksakfdl' : '계란말이'
+                          
                         # DB 입력 요망
-                        # 딸기 단팥호빵 핫도그 바나나 계란후라이 귤 소떡소떡 서울우유 콘푸로스트 크로와상 자반볶음
+                        # 딸기 단팥호빵 핫도그 바나나 계란후라이 귤 소떡소떡 서울우유 콘푸로스트 크로와상 자반볶음 계란말이
                         array = ['z','z','z','z','z','z','z']
                         
                         for i in dicc:

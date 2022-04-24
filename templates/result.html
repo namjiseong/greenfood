@@ -48,7 +48,7 @@
 						<div class="thumb_area">
 							
 							{% if True %}
-							<img src="{{ url_for('static', filename=Img)}}" alt="음식" class="img_g">
+							<img src="{{ url_for('static', filename=Img)}}" alt="음식" class="img_g" width="600">
 							{% endif %}
 						</div>
 					</div>
@@ -141,23 +141,24 @@
 		</footer>
 	</div>
 	<script>
+		// 퍼센트로 입력받음
 		var kal = {{kal}}
 		var tan = {{tan}}
 		var dan = {{dan}}
 		var ji = {{ji}}
-		
+		// 바에 입력
 		document.getElementById( 'kal' ).style.width = kal +'%';
 		document.getElementById( 'tan' ).style.width = tan +'%';
 		document.getElementById( 'dan' ).style.width = dan +'%';
 		document.getElementById( 'ji' ).style.width = ji +'%';
-		
+		//리스트->하나씩 함수 실행
 		var list_f = {{ food_list|tojson }};
 		console.log(list_f)
 		for (let i = 0; i < list_f.length; i++) {
 			ad_food(list_f[i])
 			console.log(list_f[i]);
 		}
-
+		//음식목록 추가 함수
 		function ad_food(food_name){
 			var li = document.createElement("li");
 			li.setAttribute('id', food_name);
@@ -189,7 +190,7 @@
 			li.appendChild(span);
 			document.getElementById("abc").appendChild(li);
 		}
-		
+		//제거함수
 		function de_food(food_name){
 			var target = document.getElementById(food_name);
 			var parent = target.parentElement; 

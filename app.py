@@ -4,7 +4,7 @@ from werkzeug.utils import secure_filename
 import pymysql
 import os
 import detect
-
+import detect2
 
 
 conn = pymysql.connect(host='localhost', user="root", password="qsdrwe159", db='food_data', charset='utf8')
@@ -34,16 +34,37 @@ def index():
         f.close()
         
         detect.run(source='./static/images/' + Img.filename, weights="./best.pt", save_txt=True) # 음식 객체 인식
+        f = open('./food_name.txt', 'r', encoding="UTF-8")
+        lines2 = f.readlines()
         
+        f.close()
+        drt = os.listdir('./runs/detect')[-1] # 사진 출력하는 과정
+        file_source = './runs/detect/' + drt +'/'+ Img.filename
+        file_destination = './static/images/' 
+        os.replace(file_source, file_destination + Img.filename)
+        print(Img.filename)
+        detect2.run(source='./static/images/' + Img.filename, weights="./v2_pt.pt", save_txt=True) # 음식 객체 인식
+        drt = os.listdir('./runs/detect')[-1] # 사진 출력하는 과정
+        file_source = './runs/detect/' + drt +'/'+ Img.filename
+        file_destination = './static/images/' 
+        os.replace(file_source, file_destination + Img.filename)
         f = open('./food_name.txt', 'r', encoding="UTF-8")
         lines = f.readlines()
+        lines = lines + lines2
         
         kal = []
         tan = []
         dan = []
         ji = []
         food_list = []
+        temp = set()
         for i in lines:
+            i = i.strip()
+            if i not in temp:
+                print(i)
+                temp.add(i)
+        
+        for i in temp:
             i= i.strip()
             print('i='+i)
             sql="select * from food_data where 음식명=\'" + i + "\';"
@@ -51,20 +72,18 @@ def index():
             curs.execute(sql)
             
             rows = curs.fetchall()
-            print(rows[0])
-            kal.append(rows[0][5])
-            tan.append(rows[0][6])
-            dan.append(rows[0][7])
-            ji.append(rows[0][8])
-            food_list.append(rows[0][4])
+            if len(rows) > 0:
+                print(rows[0])
+                kal.append(rows[0][5])
+                tan.append(rows[0][6])
+                dan.append(rows[0][7])
+                ji.append(rows[0][8])
+                food_list.append(rows[0][4])
         #conn.close()
             
         f.close()
         
-        drt = os.listdir('./runs/detect')[-1] # 사진 출력하는 과정
-        file_source = './runs/detect/' + drt +'/'+ Img.filename
-        file_destination = './static/images/' 
-        os.replace(file_source, file_destination + Img.filename)
+        
         
         
         # 여기서 DB 정보 가공 후 넘기기
@@ -94,6 +113,6 @@ def result():
 if __name__ == '__main__':
     
 
-    
-    app.run()
+    app.run(host='0.0.0.0', debug=True)
+    #app.run()
     

@@ -190,14 +190,14 @@ html {
 /* 검색 결과 */
 .wrap_result {
 	position: relative;
-	padding-left: 450px;
+	padding-left: 550px;
 	/* padding-top: 20px; */
 }
 .wrap_result .result_img {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 400px;
+	width: 500px;
 }
 .wrap_result .result_img .txt_img {
 	display: block;
