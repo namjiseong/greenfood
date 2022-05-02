@@ -150,9 +150,10 @@ def add():
 if __name__ == '__main__':
     
 
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0',port=5000)
     #app.run()
     
-    
-
+    #set FLASK_APP=app
+    #set FLASK_ENV=development
+    # ngrok.exe http 5000
 
