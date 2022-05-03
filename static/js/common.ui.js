@@ -187,3 +187,10 @@ function another_add_food(food_name){
     
     totext()
 }
+
+function new_food(food_name){
+    var parent = window.parent.document;
+    parent.getElementsByClassName('inp_search')[0].value = food_name;
+    console.log(parent.getElementsByClassName('inp_search')[0].value);
+    parent.getElementById('검색').submit();
+}

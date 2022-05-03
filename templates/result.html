@@ -57,7 +57,7 @@
 					</div>
 
 					<div class="search_detail">
-						<form action="/add" method="POST">
+						<form action="/add" id="검색" method="POST">
 							<fieldset>
 								<legend class="blind">음식 검색하기</legend>
 								<div class="wrap_row">
@@ -122,9 +122,14 @@
 								</dl>
 							</div>
 						</div>
-						<button class="recommand">
-							추천받기
-						</button>
+						<form action="/recommend" method="POST" target="iframe1">
+							<input type="hidden" id="p_list" name="p_list" value="">
+							<button type="submit" class="recommend" onclick="recommend_food()">
+								추천받기
+							</button>
+						</form>
+						<iframe id="iframe1" name="iframe1"></iframe>
+
 					</div>
 				</div>
 			</div>
@@ -151,7 +156,8 @@
 	<script>
 		//퍼센트 입력
 		view_p()
-		
+
+		// style="display:none"
 
 		//음식 리스트-> 목록에 추가
 		var list_f = {{ food_list|tojson }};
@@ -161,6 +167,24 @@
 			console.log(list_f[i]);
 		}
 		
+		function recommend_food(){
+			kal = document.getElementById('kal_p').innerHTML.replace("%", "");
+			tan = document.getElementById('tan_p').innerHTML.replace("%", "");;
+			dan = document.getElementById('dan_p').innerHTML.replace("%", "");;
+			ji = document.getElementById('ji_p').innerHTML.replace("%", "");;
+			var p_list = [kal, tan, dan, ji];
+			
+			var p_input = document.getElementById('p_list')
+			var to_list = "";
+			for (let i = 0; i < p_list.length; i++) {
+				to_list = to_list +" "+ p_list[i]
+			}
+			
+			p_input.setAttribute('value', to_list);
+			document.getElementById('iframe1').setAttribute('style', 'display:');
+		}
+
+
 	</script>
 	
 </body>

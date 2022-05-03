@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/common.css">
+	<script src="{{ url_for('static', filename='/js/common.ui.js') }}" > </script>
+    <title>확인</title>
+    
+</head>
+<body>
+    <div>
+        <span id="name">{{food_name}}</span>을 추가하시겠습니까?
+    </div>
+    <button class="btn_search" onclick="new_food()" style="display:inline-block">YES</button>
+    <button class="btn_search" onclick="out()">NO</button>
+</body>
+<script>
+    function new_food(){
+        var name = document.getElementById('name').innerHTML;
+        console.log(name)
+        var parent = window.parent.document;
+        parent.getElementsByClassName('inp_search')[0].value = name;
+        
+        parent.getElementById('검색').submit();
+    }
+    function out(){
+        var parent = window.parent.document;
+        parent.getElementById('iframe1').setAttribute('style',"display:none");
+    }
+</script>
+</html>
