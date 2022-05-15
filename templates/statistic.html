@@ -15,17 +15,17 @@
 			<div class="w_inner">
 				<!-- 로고 -->
 				<h1 class="logo_img">
-					<a href="/" class="link_home">
+					<a href="index.html" class="link_home">
 						<img src="./static/images/img_logo.jpg" alt="그린푸드" class="img_g">
 					</a>
 				</h1>
 
 				<nav class="wrap_gnb">
 					<ul class="list_gnb">
-						<li><a href="login">로그인</a></li>
+						<li><a href="#none">로그인</a></li>
 						<!-- <li><a href="#none">로그아웃</a></li> -->
 						<li><a href="#none">마이페이지</a></li>
-						<li><a href="statistic">통계</a></li>
+						<li><a href="#none">통계</a></li>
 					</ul>
 				</nav>
 
@@ -33,70 +33,82 @@
 		</header>
 		<main class="contents">
 			<div class="w_inner">
-				<div class="wrap_upload">
-					<h2 class="area_guide">
-						식사하기 전<br>영양성분을 알아보세요!
-					</h2>
-					<div class="guide_upload">
-						<strong class="tit_guide">
-							어떻게 사용하나요?
-						</strong>
-						<p class="guide_txt">이미지를 업로드 후 실행 버튼을 누르세요.</p>
-					</div>
-
-					<div class="form_search">
-						<form action="/" method="POST", enctype="multipart/form-data">
-							<fieldset>
-								<legend class="blind">이미지 검색</legend>
-
-								<input type="file" name="file" id="">
-								<!-- <button type="submit" class=" btn_search">실행</button> -->
-								<button type="submit" class=" btn_search">실행</button>
-								<!-- <a href="result" class="btn_search">실행</a> -->
-							</fieldset>
-						</form>
-					</div>
-
-					<div class="guide_img">
-						<span class="txt_img">예시</span>
-						<div class="thumb_img">
-							<img src="./static/images/img_food.jpg" alt="음식사진" class="img_g">
+				<h2 class="tit_page"><span>통계</span></h2>
+				<div class="wrap_statistic">
+					<div class="area_statistic">
+						<div class="field_row">
+							<span class="tit_inp">날짜 선택 : </span>
+							<input type="date" name="" id="" class="inp_date">
 						</div>
+						<strong class="tit_progress">섭취 영양 성분</strong>
 						<div class="wrap_progress">
 							<dl>
+								<div class="group_progress type3">
+									<dt>총 칼로리</dt>
+									<dd>
+										<span class="area_progress">
+											<!-- width값으로 그래프 조절합니다. -->
+											<span class="bar_progress" style="width:50%"></span>
+										</span>
+										<span class="num_percent">50%</span>
+									</dd>
+								</div>
 								<div class="group_progress type1">
 									<dt>탄수화물</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:50%"></span>
+											<span class="bar_progress" style="width:60%"></span>
 										</span>
-										<span class="num_percent">50%</span>
+										<span class="num_percent">60%</span>
 									</dd>
 								</div>
 								<div class="group_progress type2">
 									<dt>지방</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:20%"></span>
+											<span class="bar_progress" style="width:30%"></span>
 										</span>
-										<span class="num_percent">20%</span>
+										<span class="num_percent">30%</span>
 									</dd>
 								</div>
 								<div class="group_progress type4">
 									<dt>단백질</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:36%"></span>
+											<span class="bar_progress" style="width:70%"></span>
 										</span>
-										<span class="num_percent">36%</span>
+										<span class="num_percent">70%</span>
 									</dd>
 								</div>
 							</dl>
 						</div>
 					</div>
-
+					<div class="area_statistic">
+						<div class="wrap_progress">
+							<dl>
+								<div class="group_progress type5">
+									<dt>고혈압 위험도: </dt>
+									<dd>
+										<span class="area_progress">
+											<!-- width값으로 그래프 조절합니다. -->
+											<span class="bar_progress" style="width:50%"></span>
+										</span>
+										<span class="num_percent">50%</span>
+									</dd>
+								</div>
+								<div class="group_progress type6">
+									<dt>당뇨병 위험도:</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" style="width:60%"></span>
+										</span>
+										<span class="num_percent">60%</span>
+									</dd>
+								</div>
+							</dl>
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</main>
 		<footer class="footer">

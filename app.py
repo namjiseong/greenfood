@@ -180,6 +180,18 @@ def recommend():
             return render_template('comfirm.html', food_name = reco[0][4])
     return render_template('comfirm.html')
 
+@app.route('/login', methods=['GET']) # 접속하는 url
+def login():
+    return render_template('login.html')
+@app.route('/join', methods=['GET']) # 접속하는 url
+def join():
+    return render_template('join.html')
+@app.route('/statistic', methods=['GET']) # 접속하는 url
+def statistic():
+    return render_template('statistic.html')
+
+
+
 if __name__ == '__main__':
     
     
@@ -189,4 +201,5 @@ if __name__ == '__main__':
     #set FLASK_APP=app
     #set FLASK_ENV=development
     # ngrok.exe http 5000
+    #ssl_context='adhoc'
 

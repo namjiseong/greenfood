@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>[login]</title>
+<style>
+	body{
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            color: #17191d;
+            overflow-y: scroll;
+            
+        }
+        #wrapper{
+            margin: 0 auto;
+            position: relative;
+            max-width: 450px;
+            min-height: 100vh;
+            padding: 0 16px 20px;
+        }
+        #header{
+            padding-top: 120px;
+            min-width: 300px;
+            text-align: center;
+            height: 50px;
+            font-weight: bold;
+        }
+
+        .container{
+            position: relative;
+            width: 450px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            justify-content: center;
+        }
+        input{
+            box-sizing: border-box;
+            width:  100%;
+            height: 56px;
+            padding: 18px 12px;
+            margin: 10px 0px;
+        
+        }
+
+        button{
+            width: 100%;
+            height: 58px;
+            background-color: #17191d;
+            color: #fff;
+            border: 1px solid #17191d ;
+        }
+
+        buttonn{
+            width: 100%;
+            height: 58px;
+            background-color: #fff;
+            color: #17191d;
+            border: 1px solid #fff ;
+        }
+        
+</style>
+</head>
+<body>
+	<div id = "wrapper">
+		<div id = "header">
+			<span>로 그 인</span>
+		</div>
+		
+		<div class="container">
+            <form action="@{/login}" method="POST">
+		        <label>
+		        	<input type="text" placeholder="아이디를 입력해 주세요."autocomplete="off" name = "userId">
+		        </label>
+		        <label>    
+		        	<input type="password" placeholder="비밀번호를 입력해 주세요."autocomplete="off" name = "userPw">
+			    </label>    
+			    <!-- 로그인하기 -->
+			    <button type="button" class = "button" onclick="location.href='/'" >로그인하기</button>
+                <button type="button" class = "buttonn" onclick="location.href='join'" >회원가입하기</button>
+            </form>
+        </div>
+	</div>
+</body>
+</html>

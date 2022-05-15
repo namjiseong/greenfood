@@ -394,6 +394,72 @@ html {
 .group_progress.type5 .area_progress {
 	background-color: #F1F0FF;
 }
+
+/* 통계 */
+.tit_page {
+	display: block;
+	margin-bottom: 60px;
+	font-weight: 500;
+	font-size: 24px;
+	text-align: right;
+}
+.tit_page span {
+	display: inline-block;
+	padding: 0 5px;
+	position: relative;
+}
+.tit_page span::before {
+	position: absolute;
+	content: '';
+	left: 0;
+	right: 0;
+	bottom: -5px;
+	height: 20px;
+	z-index: -1;
+	background-color: #AAC923;
+	opacity: .3;
+}
+
+.wrap_statistic {
+	display: flex;
+	justify-content: space-between;
+}
+.area_statistic {
+	position: relative;
+	padding-top: 92px;
+	width: 48%;
+	align-items: stretch;
+}
+.area_statistic .field_row {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.area_statistic .field_row .tit_inp {
+	display: inline-block;
+	padding-right: 10px;
+}
+.area_statistic .field_row .inp_date {
+	display: inline-block;
+	width: 200px;
+	padding: 8px 16px;
+	border: 1px solid #999;
+	border-radius: 5px;
+}
+.area_statistic .tit_progress {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 60px;
+	text-align: center;
+	font-weight: 500;
+}
+.area_statistic .wrap_progress {
+	height: 100%;
+	box-sizing: border-box;
+}
 /* 푸터 */
 .footer {
 	margin-top: 100px;
