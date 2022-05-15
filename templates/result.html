@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
-	<script src="{{ url_for('static', filename='/js/common.ui.js') }}" > </script>
-	
+	<script src="./static/js/common.ui.js" > </script>
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<script>
 		
 		var kal_list = {{ kal_list|tojson }};
@@ -26,7 +26,7 @@
 			<div class="w_inner">
 				<!-- 로고 -->
 				<h1 class="logo_img">
-					<a href="index.html" class="link_home">
+					<a href="/" class="link_home">
 						<img src="./static/images/img_logo.jpg" alt="그린푸드" class="img_g">
 					</a>
 				</h1>
@@ -34,9 +34,9 @@
 				<nav class="wrap_gnb">
 					<ul class="list_gnb">
 						<li><a href="#none">로그인</a></li>
-						<li><a href="#none">로그아웃</a></li>
+						<!-- <li><a href="#none">로그아웃</a></li> -->
 						<li><a href="#none">마이페이지</a></li>
-						<li><a href="#none">운동추천</a></li>
+						<li><a href="#none">통계</a></li>
 					</ul>
 				</nav>
 
