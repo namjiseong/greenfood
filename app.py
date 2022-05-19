@@ -1,6 +1,6 @@
 from msilib.schema import Environment
 from tabnanny import filename_only
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 from werkzeug.utils import secure_filename
 import pymysql
 import os
@@ -13,8 +13,11 @@ conn = pymysql.connect(host='localhost', user="root", password="qsdrwe159", db='
 
 
 app = Flask(__name__)
+app.secret_key = '1234'
 UPLOAD_FOLDER = './static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['id'] = ""
+
 
 # 홈페이지
 @app.route('/', methods=('GET', 'POST')) # 접속하는 url
@@ -93,7 +96,7 @@ def recommend():
         p_list = request.form['p_list']
         p_list = list(map(int, p_list.split()))
         for i in range(len(p_list)):
-            p_list[i] = 33 - p_list[i]
+            p_list[i] = 66 - p_list[i]
             # 33기준으로 퍼센트 변환
         # 칼로리 1% = 23 탄수화물 1% =3.24 단백질 1% = 0.55 지방 1% = 0.54
         p_list[0] = p_list[0] * 23
@@ -126,16 +129,50 @@ def login():
     if request.method == "POST":
         
         # 아이디 확인 후 로그인 과정
-        
-        return render_template('index.html')
+        id = request.form['userId']
+        pw = request.form['userPw']
+        curs = conn.cursor()
+        sql="select * from user where id=\'"+id+"\';"
+        conn.ping()
+        curs.execute(sql)
+        rows = curs.fetchall()
+        if len(rows) > 0:
+            if rows[0][1] == pw:
+                print('로그인 성공')
+                flash('로그인 성공')
+                app.config['id'] = id
+                return render_template('index.html')
+        else:
+            print('로그인 실패')
+            flash('로그인 실패')
+        return render_template('login.html')
         
         
     return render_template('login.html')
-@app.route('/join', methods=['GET']) # 접속하는 url
+@app.route('/join', methods=('GET', 'POST')) # 접속하는 url
 def join():
+    if request.method == "POST":
+        # 회원 아이디 비번 DB에 저장
+        id = request.form['userId']
+        pw = request.form['userPw']
+        print(id, pw)
+        curs = conn.cursor()
+        sql="insert into user values( \'" + id + "\', \'" + pw + "\' );"
+        
+        
+        conn.ping()
+        curs.execute(sql)
+        conn.commit() # 실제 DB에 적용
+        
+        return render_template('index.html')
     return render_template('join.html')
+
+
+
+
 @app.route('/statistic', methods=['GET']) # 접속하는 url
 def statistic():
+    print(app.config['id'])
     return render_template('statistic.html')
 
 

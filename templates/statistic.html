@@ -8,7 +8,16 @@
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
 </head>
+<script>
+	function view_date(){
+		var date = document.getElementById('date');
 
+		console.log(date.value);
+		
+	}
+
+
+</script>
 <body>
 	<div class="container">
 		<header class="header">
@@ -38,9 +47,9 @@
 					<div class="area_statistic">
 						<div class="field_row">
 							<span class="tit_inp">날짜 선택 : </span>
-							<input type="date" name="" id="" class="inp_date">
+							<input type="date" name="" id="date" class="inp_date" onchange="view_date()">
 						</div>
-						<strong class="tit_progress">섭취 영양 성분</strong>
+						<strong class="tit_progress">일일 섭취 영양 성분</strong>
 						<div class="wrap_progress">
 							<dl>
 								<div class="group_progress type3">
@@ -84,14 +93,15 @@
 						</div>
 					</div>
 					<div class="area_statistic">
+						<strong class="tit_progress">평균 섭취 영양 성분</strong>
 						<div class="wrap_progress">
-							<dl>
+							<!-- <dl>
 								<div class="group_progress type5">
 									<dt>고혈압 위험도: </dt>
 									<dd>
 										<span class="area_progress">
 											<!-- width값으로 그래프 조절합니다. -->
-											<span class="bar_progress" style="width:50%"></span>
+											<!-- <span class="bar_progress" style="width:50%"></span>
 										</span>
 										<span class="num_percent">50%</span>
 									</dd>
@@ -103,6 +113,45 @@
 											<span class="bar_progress" style="width:60%"></span>
 										</span>
 										<span class="num_percent">60%</span>
+									</dd>
+								</div>
+							</dl> -->
+							<dl>
+								<div class="group_progress type3">
+									<dt>총 칼로리</dt>
+									<dd>
+										<span class="area_progress">
+											<!-- width값으로 그래프 조절합니다. -->
+											<span class="bar_progress" style="width:50%"></span>
+										</span>
+										<span class="num_percent">50%</span>
+									</dd>
+								</div>
+								<div class="group_progress type1">
+									<dt>탄수화물</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" style="width:60%"></span>
+										</span>
+										<span class="num_percent">60%</span>
+									</dd>
+								</div>
+								<div class="group_progress type2">
+									<dt>지방</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" style="width:30%"></span>
+										</span>
+										<span class="num_percent">30%</span>
+									</dd>
+								</div>
+								<div class="group_progress type4">
+									<dt>단백질</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" style="width:70%"></span>
+										</span>
+										<span class="num_percent">70%</span>
 									</dd>
 								</div>
 							</dl>
