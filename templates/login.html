@@ -68,7 +68,7 @@
 		</div>
 		
 		<div class="container">
-            <form action="@{/login}" method="POST">
+            <form action="/login" method="POST">
 		        <label>
 		        	<input type="text" placeholder="아이디를 입력해 주세요."autocomplete="off" name = "userId">
 		        </label>
@@ -76,7 +76,7 @@
 		        	<input type="password" placeholder="비밀번호를 입력해 주세요."autocomplete="off" name = "userPw">
 			    </label>    
 			    <!-- 로그인하기 -->
-			    <button type="button" class = "button" onclick="location.href='/'" >로그인하기</button>
+			    <button type="submit" class = "button" onclick="location.href='/'" >로그인하기</button>
                 <button type="button" class = "buttonn" onclick="location.href='join'" >회원가입하기</button>
             </form>
         </div>

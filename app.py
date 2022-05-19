@@ -121,8 +121,15 @@ def recommend():
             return render_template('comfirm.html', food_name = reco[0][4])
     return render_template('comfirm.html')
 
-@app.route('/login', methods=['GET']) # 접속하는 url
+@app.route('/login', methods=('GET', 'POST')) # 접속하는 url
 def login():
+    if request.method == "POST":
+        
+        # 아이디 확인 후 로그인 과정
+        
+        return render_template('index.html')
+        
+        
     return render_template('login.html')
 @app.route('/join', methods=['GET']) # 접속하는 url
 def join():
