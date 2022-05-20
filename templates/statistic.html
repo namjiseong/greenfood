@@ -8,7 +8,19 @@
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-
+	<script src="./static/js/common.ui.js" > </script>
+	<script>
+		var kal_list = []
+		var tan_list = []
+		var dan_list = []
+		var ji_list = []
+	</script>
+	<style>
+		.area_detail{
+			width : 100px;
+			padding : 30px;
+		}
+	</style>
 </head>
 
 <body>
@@ -42,6 +54,9 @@
 							<span class="tit_inp">날짜 선택 : </span>
 							<input type="date" name="" id="date" class="inp_date" onchange="view_date()">
 						</div>
+
+						
+
 						<strong class="tit_progress">일일 섭취 영양 성분</strong>
 						<div class="wrap_progress">
 							<dl>
@@ -50,41 +65,50 @@
 									<dd>
 										<span class="area_progress">
 											<!-- width값으로 그래프 조절합니다. -->
-											<span class="bar_progress" style="width:50%"></span>
+											<span class="bar_progress" style="width:50%" id="kal"></span>
 										</span>
-										<span class="num_percent">50%</span>
+										<span class="num_percent" id="kal_p">50%</span>
 									</dd>
 								</div>
 								<div class="group_progress type1">
 									<dt>탄수화물</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:60%"></span>
+											<span class="bar_progress" style="width:60%" id="tan"></span>
 										</span>
-										<span class="num_percent">60%</span>
+										<span class="num_percent" id="tan_p">60%</span>
 									</dd>
 								</div>
 								<div class="group_progress type2">
 									<dt>지방</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:30%"></span>
+											<span class="bar_progress" style="width:30%" id="ji"></span>
 										</span>
-										<span class="num_percent">30%</span>
+										<span class="num_percent" id="ji_p">30%</span>
 									</dd>
 								</div>
 								<div class="group_progress type4">
 									<dt>단백질</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:70%"></span>
+											<span class="bar_progress" style="width:70%" id="dan"></span>
 										</span>
-										<span class="num_percent">70%</span>
+										<span class="num_percent" id="dan_p">70%</span>
 									</dd>
 								</div>
 							</dl>
 						</div>
 					</div>
+
+					<div class="area_detail">
+						<h2 class="tit_detail"><span>음식 목록</span></h2>
+						<br>
+						<ul class="list_food" id="abc">
+
+						</ul>
+					</div>
+
 					<div class="area_statistic">
 						<strong class="tit_progress">평균 섭취 영양 성분</strong>
 						<div class="wrap_progress">
@@ -173,23 +197,7 @@
 		</footer>
 	</div>
 	<script>
-		function replaceAll(strTemp, strValue1, strValue2){ 
-
-            while(1){
-
-                if( strTemp.indexOf(strValue1) != -1 )
-
-                    strTemp = strTemp.replace(strValue1, strValue2);
-
-                else
-
-                    break;
-
-            }
-
-            return strTemp;
-
-     	}
+		
 
 		function view_date(){
 			var date = document.getElementById('date');
@@ -209,15 +217,29 @@
 
 						var food_names = []
 						var count = []
+						kal_list = []
+						tan_list = []
+						dan_list = []
+						ji_list = []
+
 						for (var i=0; i < result.length;i++){
 							food_names.push(result[i][0]);
 							count.push(result[i][1]);
-							
+							kal_list.push(result[i][2]);
+							tan_list.push(result[i][3]);
+							dan_list.push(result[i][4]);
+							ji_list.push(result[i][5]);
 						}
 						console.log(food_names)
 						console.log(count)
-
-						
+						// 음식 목록 표시
+						for (var i=0; i < food_names.length;i++){
+							var li = document.createElement("li");
+							li.innerHTML = food_names[i] + "  " + count[i];
+							document.getElementById("abc").appendChild(li);
+						}
+						// 퍼센트 변경
+						view_p()
 
 				},
 				error : function(xtr,status,error){
