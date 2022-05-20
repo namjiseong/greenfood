@@ -1,6 +1,6 @@
 from msilib.schema import Environment
 from tabnanny import filename_only
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, jsonify
 from werkzeug.utils import secure_filename
 import pymysql
 import os
@@ -9,6 +9,7 @@ import detect2
 import random
 import food_detect
 from datetime import datetime
+import json
 #DB선언
 conn = pymysql.connect(host='localhost', user="root", password="qsdrwe159", db='food_data', charset='utf8')
 
@@ -171,9 +172,21 @@ def join():
 
 
 
-@app.route('/statistic', methods=['GET']) # 접속하는 url
+@app.route('/statistic', methods=('GET', 'POST')) # 접속하는 url
 def statistic():
     print(app.config['id'])
+    
+    if request.method == "POST":
+        print(request.form['date'])
+        # DB에서 찾아서 json으로 리턴
+        box = []
+        curs = conn.cursor()
+        sql="select food_name, count from date_food where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\';"
+        conn.ping()
+        curs.execute(sql)
+        rows = curs.fetchall()
+        
+        return  jsonify(rows)
     return render_template('statistic.html')
 
 
