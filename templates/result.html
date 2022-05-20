@@ -128,8 +128,15 @@
 								추천받기
 							</button>
 						</form>
+						
 						<iframe id="iframe1" name="iframe1"></iframe>
-
+						<form action="/date_add" method="POST">
+							<input type="hidden" id="date_food" name="date_food" value="">
+							<input type="hidden" id="date_count" name="date_count" value="">
+							<button type="submit" class="recommend" onclick="date_add()">
+								통계에 추가
+							</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -182,6 +189,19 @@
 			
 			p_input.setAttribute('value', to_list);
 			document.getElementById('iframe1').setAttribute('style', 'display:');
+		}
+		function date_add(){
+			// 음식 목록 반환해야함
+			var food = document.getElementById('date_food');
+			var food_count = document.getElementById('date_count');
+
+			for (let i = 0; i < list_f.length; i++) {
+				console.log(list_f[i]);
+				console.log(document.getElementById(list_f[i]+'count').innerText);
+				food.value  = food.value +" "+ list_f[i];
+				food_count.value = food_count.value + " " +document.getElementById(list_f[i]+'count').innerHTML
+				
+			}
 		}
 
 

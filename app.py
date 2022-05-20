@@ -8,6 +8,7 @@ import detect
 import detect2
 import random
 import food_detect
+from datetime import datetime
 #DB선언
 conn = pymysql.connect(host='localhost', user="root", password="qsdrwe159", db='food_data', charset='utf8')
 
@@ -175,6 +176,29 @@ def statistic():
     print(app.config['id'])
     return render_template('statistic.html')
 
+
+@app.route('/date_add', methods=('GET', 'POST')) # 접속하는 url
+def date_add():
+    
+    date_food = request.form['date_food']
+    date_count = request.form['date_count']
+    date_food_list = list(date_food.split())
+    date_count_list = list(date_count.split())
+    print(date_food_list)
+    print(date_count_list)
+    for i in range(len(date_food_list)):
+        
+        #DB에 저장
+        curs = conn.cursor()
+        sql="insert into date_food values(\'"+app.config['id']+"\', \'"+ datetime.today().strftime("%Y-%m-%d") +"\', \'"+date_food_list[i]+"\', "+date_count_list[i]+");"
+        
+        
+        conn.ping()
+        curs.execute(sql)
+        conn.commit() # 실제 DB에 적용
+    
+    flash('통계 저장 성공')
+    return render_template('index.html')
 
 
 if __name__ == '__main__':

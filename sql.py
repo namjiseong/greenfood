@@ -1,4 +1,5 @@
-id = '11'
+from datetime import datetime
 
-pw = 'agg'
-print("insert into user values( \'" + id + "\', \'" + pw + "\' );")
+
+print(datetime.today().strftime("%Y-%m-%d"))
+
