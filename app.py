@@ -190,7 +190,7 @@ def statistic():
         
         return  jsonify(rows)
     
-    sql = 'select sum(count * 칼로리) as 칼로리_, sum(count * 탄수화물) as 탄수화물_ , sum(count*단백질) as 단백질_, sum(count * 지방) as 지방_ FROM date_food, food_data where date_food.food_name=food_data.음식명;'
+    sql = "select sum(count * 칼로리) as 칼로리_, sum(count * 탄수화물) as 탄수화물_ , sum(count*단백질) as 단백질_, sum(count * 지방) as 지방_ FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and date_food.food_name=food_data.음식명;"
     conn.ping()
     curs.execute(sql)
     rows = curs.fetchall()
@@ -204,7 +204,7 @@ def statistic():
         sum_tan = rows[0][1]
         sum_dan = rows[0][2]
         sum_ji = rows[0][3]
-    sql = 'select count(*) from date_food group by date_time;'   
+    sql = "select count(*) from date_food where now_id=\'"+app.config['id']+"\'group by date_time;"
     conn.ping()
     curs.execute(sql)
     rows = curs.fetchall()    
