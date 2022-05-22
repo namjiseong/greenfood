@@ -139,36 +139,36 @@
 									<dd>
 										<span class="area_progress">
 											<!-- width값으로 그래프 조절합니다. -->
-											<span class="bar_progress" style="width:50%"></span>
+											<span class="bar_progress" id="avg_kal"style="width:50%"></span>
 										</span>
-										<span class="num_percent">50%</span>
+										<span class="num_percent" id="avg_kal_p">50%</span>
 									</dd>
 								</div>
 								<div class="group_progress type1">
 									<dt>탄수화물</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:60%"></span>
+											<span class="bar_progress" id="avg_tan" style="width:60%"></span>
 										</span>
-										<span class="num_percent">60%</span>
+										<span class="num_percent" id="avg_tan_p">60%</span>
 									</dd>
 								</div>
 								<div class="group_progress type2">
 									<dt>지방</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:30%"></span>
+											<span class="bar_progress" id="avg_ji" style="width:30%"></span>
 										</span>
-										<span class="num_percent">30%</span>
+										<span class="num_percent" id="avg_ji_p">30%</span>
 									</dd>
 								</div>
 								<div class="group_progress type4">
 									<dt>단백질</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" style="width:70%"></span>
+											<span class="bar_progress" id="avg_dan" style="width:70%"></span>
 										</span>
-										<span class="num_percent">70%</span>
+										<span class="num_percent" id="avg_dan_p">70%</span>
 									</dd>
 								</div>
 							</dl>
@@ -247,7 +247,27 @@
 				}
 			});
 		}
-	
+		
+
+		function avg_view(kal, tan, dan, ji){
+			kal = Math.round(kal/2300 * 100) ;
+			document.getElementById( 'avg_kal' ).style.width = kal+'%';
+			tan = Math.round(tan/324 *100);
+			document.getElementById( 'avg_tan' ).style.width = tan +'%';
+			dan = Math.round(dan/55 * 100);
+			document.getElementById( 'avg_dan' ).style.width = dan +'%';
+			ji = Math.round(ji/54 * 100);
+			document.getElementById( 'avg_ji' ).style.width = ji +'%';
+
+			
+
+			document.getElementById('avg_kal_p').innerHTML=kal + '%';
+			document.getElementById('avg_tan_p').innerHTML=tan+'%';
+			document.getElementById('avg_dan_p').innerHTML=dan+'%';
+			document.getElementById('avg_ji_p').innerHTML=ji+'%';
+		}
+		console.log({{avg_kal}}, {{avg_tan}}, {{avg_dan}}, {{avg_ji}})
+		avg_view({{avg_kal}}, {{avg_tan}}, {{avg_dan}}, {{avg_ji}});
 	
 	</script>
 </body>
