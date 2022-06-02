@@ -200,8 +200,13 @@
 		
 
 		function view_date(){
+			a = document.getElementById('abc');
+			while (a.hasChildNodes()) {
+				a.removeChild(a.firstChild);
+			}
+
 			var date = document.getElementById('date');
-	
+			
 			console.log(date.value);
 			// 해당 날짜 DB에서 검색해서 퍼센트 띄우기
 			$.ajax({

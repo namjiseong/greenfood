@@ -174,48 +174,52 @@ def join():
 
 @app.route('/statistic', methods=('GET', 'POST')) # 접속하는 url
 def statistic():
-    print(app.config['id'])
-    curs = conn.cursor()
     
-    if request.method == "POST":
-        print(request.form['date'])
-        # DB에서 찾아서 json으로 리턴
-        box = []
+    if app.config['id']:
+        print(app.config['id'])
+        curs = conn.cursor()
         
-        sql="select food_name, count from date_food where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\';"
-        sql = "select food_name, count, 칼로리, 탄수화물, 단백질, 지방 FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\' and date_food.food_name=food_data.음식명;"
+        if request.method == "POST":
+            print(request.form['date'])
+            # DB에서 찾아서 json으로 리턴
+            box = []
+            
+            sql="select food_name, count from date_food where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\';"
+            sql = "select food_name, count, 칼로리, 탄수화물, 단백질, 지방 FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\' and date_food.food_name=food_data.음식명;"
+            conn.ping()
+            curs.execute(sql)
+            rows = curs.fetchall()
+            
+            return  jsonify(rows)
+        
+        sql = "select sum(count * 칼로리) as 칼로리_, sum(count * 탄수화물) as 탄수화물_ , sum(count*단백질) as 단백질_, sum(count * 지방) as 지방_ FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and date_food.food_name=food_data.음식명;"
         conn.ping()
         curs.execute(sql)
         rows = curs.fetchall()
+        print(rows)
+        sum_kal = 0
+        sum_tan = 0
+        sum_dan = 0
+        sum_ji = 0
+        if len(rows) > 0:
+            sum_kal = rows[0][0]
+            sum_tan = rows[0][1]
+            sum_dan = rows[0][2]
+            sum_ji = rows[0][3]
+        sql = "select count(*) from date_food where now_id=\'"+app.config['id']+"\'group by date_time;"
+        conn.ping()
+        curs.execute(sql)
+        rows = curs.fetchall()    
+        divi = len(rows)
+        avg_kal = sum_kal/divi
+        avg_tan = sum_tan/divi
+        avg_dan = sum_dan/divi
+        avg_ji = sum_ji/divi
         
-        return  jsonify(rows)
-    
-    sql = "select sum(count * 칼로리) as 칼로리_, sum(count * 탄수화물) as 탄수화물_ , sum(count*단백질) as 단백질_, sum(count * 지방) as 지방_ FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and date_food.food_name=food_data.음식명;"
-    conn.ping()
-    curs.execute(sql)
-    rows = curs.fetchall()
-    print(rows)
-    sum_kal = 0
-    sum_tan = 0
-    sum_dan = 0
-    sum_ji = 0
-    if len(rows) > 0:
-        sum_kal = rows[0][0]
-        sum_tan = rows[0][1]
-        sum_dan = rows[0][2]
-        sum_ji = rows[0][3]
-    sql = "select count(*) from date_food where now_id=\'"+app.config['id']+"\'group by date_time;"
-    conn.ping()
-    curs.execute(sql)
-    rows = curs.fetchall()    
-    divi = len(rows)
-    avg_kal = sum_kal/divi
-    avg_tan = sum_tan/divi
-    avg_dan = sum_dan/divi
-    avg_ji = sum_ji/divi
-    
-    return render_template('statistic.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji)
-
+        return render_template('statistic.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji)
+    else:
+        flash('로그인이 필요합니다')
+        return render_template('index.html')
 
 @app.route('/date_add', methods=('GET', 'POST')) # 접속하는 url
 def date_add():
