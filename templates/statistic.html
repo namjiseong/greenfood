@@ -176,8 +176,8 @@
 						</div>
 					</div>
 					<form action="/test" method="POST" style="margin-top:150px;margin-left:15px">
-						
-						<button type="submit" class=" btn_search" style="width:150px">성인병 위험도 진단</button>
+						<input type="hidden" name="energy_list" value="">
+						<button type="submit" class=" btn_search" style="width:150px"onclick=inputenergy()>성인병 위험도 진단</button>
 						
 					</form>
 					
@@ -282,6 +282,12 @@
 		console.log({{avg_kal}}, {{avg_tan}}, {{avg_dan}}, {{avg_ji}})
 		avg_view({{avg_kal}}, {{avg_tan}}, {{avg_dan}}, {{avg_ji}});
 	
+
+		function inputenergy(){
+			//평균치 정보 기입
+			console.log(1);
+		}
+
 	</script>
 </body>
 

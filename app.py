@@ -192,8 +192,8 @@ def statistic():
             
             return  jsonify(rows)
         
-        sql = "select sum(count * 칼로리) as 칼로리_, sum(count * 탄수화물) as 탄수화물_ , sum(count*단백질) as 단백질_, sum(count * 지방) as 지방_ FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and date_food.food_name=food_data.음식명;"
-        conn.ping()
+        sql = "select sum(count * 칼로리) as 칼로리_, sum(count * 탄수화물) as 탄수화물_ , sum(count*단백질) as 단백질_, sum(count * 지방) as 지방_ , sum(count * 나트륨) as 나트륨_ , sum(count * 콜레스테롤) as 콜레스테롤_, sum(count * 포화지방산) as 포화지방산_ , sum(count * 총당류) as 총당류_, sum(count * 칼륨) as 칼륨_, sum(count * 칼슘) as 칼슘_ FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and date_food.food_name=food_data.음식명;"
+        conn.ping() # 
         curs.execute(sql)
         rows = curs.fetchall()
         print(rows)
@@ -206,6 +206,12 @@ def statistic():
             sum_tan = rows[0][1]
             sum_dan = rows[0][2]
             sum_ji = rows[0][3]
+            sum_na = rows[0][4]
+            sum_col = rows[0][5]
+            sum_fo = rows[0][6]
+            sum_dag = rows[0][7]
+            sum_kr = rows[0][8]
+            sum_ks = rows[0][9]
         sql = "select count(*) from date_food where now_id=\'"+app.config['id']+"\'group by date_time;"
         conn.ping()
         curs.execute(sql)
@@ -215,6 +221,14 @@ def statistic():
         avg_tan = sum_tan/divi
         avg_dan = sum_dan/divi
         avg_ji = sum_ji/divi
+        avg_na = sum_na/divi
+        avg_col = sum_col/divi
+        avg_fo = sum_fo/divi
+        avg_dag = sum_dag/divi
+        avg_kr = sum_kr/divi
+        avg_ks = sum_ks/divi
+        # 미리 진단 하고 결과만 보내놓기
+        #####
         
         return render_template('statistic.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji)
     else:
