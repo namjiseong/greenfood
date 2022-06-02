@@ -245,6 +245,12 @@ def date_add():
     return render_template('index.html')
 
 
+@app.route('/test', methods=('GET', 'POST')) # 접속하는 url
+def test():
+    if request.method == "POST":
+        return render_template('index.html')
+    return render_template('index.html')
+
 if __name__ == '__main__':
     
     
