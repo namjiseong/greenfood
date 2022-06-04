@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Greenfood</title>
+	<link rel="stylesheet" href="./static/css/common.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="./static/js/common.ui.js" > </script>
+	<style>
+        #bar{
+            height : 40px
+        }
+    </style>
+	
+</head>
+
+<body>
+	<div class="container">
+		<header class="header">
+			<div class="w_inner">
+				<!-- 로고 -->
+				<h1 class="logo_img">
+					<a href="/" class="link_home">
+						<img src="./static/images/img_logo.jpg" alt="그린푸드" class="img_g">
+					</a>
+				</h1>
+
+				<nav class="wrap_gnb">
+					<ul class="list_gnb">
+						<li><a href="#none">로그인</a></li>
+						<li><a href="#none">마이페이지</a></li>
+						<li><a href="#none">통계</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+		<main class="contents">
+			<div class="w_inner">
+				<h2 class="tit_page"><span>통계</span></h2>
+				<div class="wrap_statistic">
+					<div class="area_statistic">
+						<strong class="tit_progress">평균 섭취 영양 성분</strong>
+						<div class="wrap_progress">
+							
+							<dl>
+								<div class="group_progress type3">
+									<dt>총 칼로리</dt>
+									<dd>
+										<span class="area_progress">
+											<!-- width값으로 그래프 조절합니다. -->
+											<span class="bar_progress" id="avg_kal"style="width:50%"></span>
+										</span>
+										<span class="num_percent" id="avg_kal_p">50%</span>
+									</dd>
+								</div>
+								<div class="group_progress type1">
+									<dt>탄수화물</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" id="avg_tan" style="width:60%"></span>
+										</span>
+										<span class="num_percent" id="avg_tan_p">60%</span>
+									</dd>
+								</div>
+								<div class="group_progress type2">
+									<dt>지방</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" id="avg_ji" style="width:30%"></span>
+										</span>
+										<span class="num_percent" id="avg_ji_p">30%</span>
+									</dd>
+								</div>
+								<div class="group_progress type4">
+									<dt>단백질</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" id="avg_dan" style="width:70%"></span>
+										</span>
+										<span class="num_percent" id="avg_dan_p">70%</span>
+									</dd>
+								</div>
+							</dl>
+
+
+
+						</div>
+					</div>
+                    <div class="area_statistic">
+						<strong class="tit_progress">성인병 위험도</strong>
+						<div class="wrap_progress">
+							
+							<dl style="margin-top:20px">
+								<div class="group_progress type1" id="bar">
+									<dt>고혈압</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" id="avg_tan" style="width:60%"></span>
+										</span>
+										<span class="num_percent" id="avg_tan_p">60%</span>
+									</dd>
+								</div>
+								<div class="group_progress type2" id="bar">
+									<dt>비만</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" id="avg_ji" style="width:30%"></span>
+										</span>
+										<span class="num_percent" id="avg_ji_p">30%</span>
+									</dd>
+								</div>
+								<div class="group_progress type4" id="bar">
+									<dt>당뇨병</dt>
+									<dd>
+										<span class="area_progress">
+											<span class="bar_progress" id="avg_dan" style="width:70%"></span>
+										</span>
+										<span class="num_percent" id="avg_dan_p">70%</span>
+									</dd>
+								</div>
+							</dl>
+
+
+                            
+						</div>
+					</div>
+					
+					
+
+				</div>
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="w_inner">
+				<dl class="list_desc">
+					<div class="area_desc">
+						<dt>주의사항:</dt>
+						<dd>내용 입력</dd>
+					</div>
+					<div class="area_desc">
+						<dt>DB 출처:</dt>
+						<dd>내용 입력</dd>
+					</div>
+					<div class="area_desc">
+						<dt>정보 관리 정책:</dt>
+						<dd>내용 입력</dd>
+					</div>
+				</dl>
+			</div>
+		</footer>
+	</div>
+	
+</body>
+
+</html>

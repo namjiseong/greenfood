@@ -10,6 +10,11 @@ import random
 import food_detect
 from datetime import datetime
 import json
+import joblib
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
+import numpy as np
+
 #DB선언
 conn = pymysql.connect(host='localhost', user="root", password="qsdrwe159", db='food_data', charset='utf8')
 
@@ -227,10 +232,22 @@ def statistic():
         avg_dag = sum_dag/divi
         avg_kr = sum_kr/divi
         avg_ks = sum_ks/divi
+        
+        test = [avg_kal, avg_tan, avg_dan, avg_ji, avg_na, avg_col, avg_fo, avg_dag, avg_kr, avg_ks]
+        test = pd.DataFrame(data = [(avg_kal, avg_tan, avg_dan, avg_ji, avg_na, avg_col, avg_fo, avg_dag, avg_kr, avg_ks)])
+        
         # 미리 진단 하고 결과만 보내놓기
         #####
+        go_model = joblib.load('./go_rpmodel.pkl')
+        be_model = joblib.load('./be_rpmodel.pkl')
+        dag_model = joblib.load('./dag_rpmodel.pkl')
+        go_p = go_model.predict_proba(test)
+        be_p = be_model.predict_proba(test)
+        dag_p = dag_model.predict_proba(test)
+        per = [int(go_p[0][1] * 100), int(be_p[0][1] * 100), int(dag_p[0][1] * 100)]
         
-        return render_template('statistic.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji)
+        
+        return render_template('statistic.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji, per = per)
     else:
         flash('로그인이 필요합니다')
         return render_template('index.html')
@@ -262,8 +279,10 @@ def date_add():
 @app.route('/test', methods=('GET', 'POST')) # 접속하는 url
 def test():
     if request.method == "POST":
-        return render_template('index.html')
-    return render_template('index.html')
+        print(request.form['per_list'])
+        print(request.form['avg_list'])
+        return render_template('test.html')
+    return render_template('test.html')
 
 if __name__ == '__main__':
     
