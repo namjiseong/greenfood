@@ -280,8 +280,10 @@ def date_add():
 def test():
     if request.method == "POST":
         print(request.form['per_list'])
+        go, be, dag = map(int, request.form['per_list'].split(","))
         print(request.form['avg_list'])
-        return render_template('test.html')
+        avg_kal, avg_tan, avg_dan, avg_ji = map(float, request.form['avg_list'].split(','))
+        return render_template('test.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji, go=go, be=be, dag=dag)
     return render_template('test.html')
 
 if __name__ == '__main__':

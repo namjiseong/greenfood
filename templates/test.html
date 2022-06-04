@@ -99,27 +99,27 @@
 									<dt>고혈압</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" id="avg_tan" style="width:60%"></span>
+											<span class="bar_progress" id="go" style="width:60%"></span>
 										</span>
-										<span class="num_percent" id="avg_tan_p">60%</span>
+										<span class="num_percent" id="go_p">60%</span>
 									</dd>
 								</div>
 								<div class="group_progress type2" id="bar">
 									<dt>비만</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" id="avg_ji" style="width:30%"></span>
+											<span class="bar_progress" id="be" style="width:30%"></span>
 										</span>
-										<span class="num_percent" id="avg_ji_p">30%</span>
+										<span class="num_percent" id="be_p">30%</span>
 									</dd>
 								</div>
 								<div class="group_progress type4" id="bar">
 									<dt>당뇨병</dt>
 									<dd>
 										<span class="area_progress">
-											<span class="bar_progress" id="avg_dan" style="width:70%"></span>
+											<span class="bar_progress" id="dag" style="width:70%"></span>
 										</span>
-										<span class="num_percent" id="avg_dan_p">70%</span>
+										<span class="num_percent" id="dag_p">70%</span>
 									</dd>
 								</div>
 							</dl>
@@ -153,7 +153,39 @@
 			</div>
 		</footer>
 	</div>
-	
+	<script>
+        function avg_view(kal, tan, dan, ji){
+			kal = Math.round(kal/2300 * 100) ;
+			document.getElementById( 'avg_kal' ).style.width = kal+'%';
+			tan = Math.round(tan/324 *100);
+			document.getElementById( 'avg_tan' ).style.width = tan +'%';
+			dan = Math.round(dan/55 * 100);
+			document.getElementById( 'avg_dan' ).style.width = dan +'%';
+			ji = Math.round(ji/54 * 100);
+			document.getElementById( 'avg_ji' ).style.width = ji +'%';
+
+			document.getElementById('avg_kal_p').innerHTML=kal + '%';
+			document.getElementById('avg_tan_p').innerHTML=tan+'%';
+			document.getElementById('avg_dan_p').innerHTML=dan+'%';
+			document.getElementById('avg_ji_p').innerHTML=ji+'%';
+		}
+		
+		avg_view({{avg_kal}}, {{avg_tan}}, {{avg_dan}}, {{avg_ji}});
+        
+        
+        function per(go, be, dag){
+            document.getElementById("go").style.width = go + '%';
+            document.getElementById("be").style.width = be + '%';
+            document.getElementById("dag").style.width = dag + '%';
+            document.getElementById("go_p").innerHTML = go + "%";
+            document.getElementById("be_p").innerHTML = be + "%";
+            document.getElementById("dag_p").innerHTML = dag + "%";
+        }
+        per({{go}}, {{be}}, {{dag}});
+
+
+
+    </script>
 </body>
 
 </html>
