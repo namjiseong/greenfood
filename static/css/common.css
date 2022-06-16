@@ -63,13 +63,13 @@ html {
 	letter-spacing: -0.03em;
 }
 /* layout style */
-.container {
+/* .container {
 	min-width: 1024px;
-}
-.w_inner {
+} */
+/* .w_inner {
 	width: 1024px;
 	margin: 0 auto;
-}
+} */
 .blind {
 	position: absolute;
 	width: 1px;
@@ -399,6 +399,7 @@ html {
 .tit_page {
 	display: block;
 	margin-bottom: 60px;
+	margin-right: 60px;
 	font-weight: 500;
 	font-size: 24px;
 	text-align: right;
