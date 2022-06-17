@@ -35,9 +35,12 @@ def index():
         
         Img = request.files['file']
         Img.save(os.path.join(app.config['UPLOAD_FOLDER'], Img.filename))  # 이미지 서버에 저장
-        
-        answer = food_detect.boxbox(Img)
-        
+        try:
+            
+            answer = food_detect.boxbox(Img)
+        except:
+            flash('인식 실패')
+            return render_template('index.html')
         return render_template('result.html', Img = 'images/'+Img.filename, food_list = answer[0], kal_list = answer[1], tan_list=answer[2], dan_list=answer[3], ji_list=answer[4])
         ###
     
