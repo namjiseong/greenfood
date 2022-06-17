@@ -38,8 +38,9 @@ def index():
         try:
             
             answer = food_detect.boxbox(Img)
-        except:
+        except Exception as e:
             flash('인식 실패')
+            print(e)
             return render_template('index.html')
         return render_template('result.html', Img = 'images/'+Img.filename, food_list = answer[0], kal_list = answer[1], tan_list=answer[2], dan_list=answer[3], ji_list=answer[4])
         ###
@@ -225,16 +226,21 @@ def statistic():
         curs.execute(sql)
         rows = curs.fetchall()    
         divi = len(rows)
-        avg_kal = sum_kal/divi
-        avg_tan = sum_tan/divi
-        avg_dan = sum_dan/divi
-        avg_ji = sum_ji/divi
-        avg_na = sum_na/divi
-        avg_col = sum_col/divi
-        avg_fo = sum_fo/divi
-        avg_dag = sum_dag/divi
-        avg_kr = sum_kr/divi
-        avg_ks = sum_ks/divi
+        if divi == 0:
+            flash('통계 자료 없음')
+            return render_template('index.html')
+        else:
+              
+            avg_kal = sum_kal/divi
+            avg_tan = sum_tan/divi
+            avg_dan = sum_dan/divi
+            avg_ji = sum_ji/divi
+            avg_na = sum_na/divi
+            avg_col = sum_col/divi
+            avg_fo = sum_fo/divi
+            avg_dag = sum_dag/divi
+            avg_kr = sum_kr/divi
+            avg_ks = sum_ks/divi
         
         test = [avg_kal, avg_tan, avg_dan, avg_ji, avg_na, avg_col, avg_fo, avg_dag, avg_kr, avg_ks]
         test = pd.DataFrame(data = [(avg_kal, avg_tan, avg_dan, avg_ji, avg_na, avg_col, avg_fo, avg_dag, avg_kr, avg_ks)])
