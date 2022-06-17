@@ -1,4 +1,58 @@
 //퍼센트 비율 갱신 함수
+function tag (end, tag) {
+			
+
+    let progress = document.getElementById(tag)
+    let interval = 1
+    let updatesPerSecond = 2000 / 180
+    
+    
+    function animator () {
+        if(end > 100){
+            end = 100
+        }
+        progress.style.width = (parseInt(progress.style.width.substring(0,2)) + interval) + '%';
+
+        if ( (parseInt(progress.style.width.substring(0,2)) + interval) < end){
+            setTimeout(animator, updatesPerSecond);
+        } else { 
+            progress.style.width = end + '%'
+        }
+    }
+  
+    setTimeout(() => {
+      animator()
+    }, updatesPerSecond)
+}
+function tag_de (end, tag) {
+			
+
+    let progress = document.getElementById(tag)
+    let interval = 1
+    let updatesPerSecond = 2000 / 180
+    
+    
+    function animator () {
+        if(end < 0){
+            end = 0
+        }
+        progress.style.width = (parseInt(progress.style.width.substring(0,2)) - interval) + '%';
+
+        if ( (parseInt(progress.style.width.substring(0,2)) + interval) > end){
+            setTimeout(animator, updatesPerSecond);
+        } else { 
+            progress.style.width = end + '%'
+        }
+    }
+  
+    setTimeout(() => {
+      animator()
+    }, updatesPerSecond)
+}
+
+
+
+
 function view_p(){
     
     var kal = 0;
@@ -6,25 +60,29 @@ function view_p(){
         kal += kal_list[i];
     }
     kal = Math.round(kal/2300 * 100) ;
-    document.getElementById( 'kal' ).style.width = kal+'%';
+    document.getElementById( 'kal' ).style.width = 0+'%';
+    tag(kal, 'kal');
     var tan = 0;
     for (let i = 0; i < tan_list.length; i++) {
         tan += tan_list[i];
     }
     tan = Math.round(tan/324 *100);
-    document.getElementById( 'tan' ).style.width = tan +'%';
+    document.getElementById( 'tan' ).style.width = 0 +'%';
+    tag(tan, 'tan');
     var dan = 0;
     for (let i = 0; i < dan_list.length; i++) {
         dan += dan_list[i];
     }
     dan = Math.round(dan/55 * 100);
-    document.getElementById( 'dan' ).style.width = dan +'%';
+    document.getElementById( 'dan' ).style.width = 0 +'%';
+    tag(dan, 'dan');
     var ji = 0;
     for (let i = 0; i < ji_list.length; i++) {
         ji += ji_list[i];
     }
     ji = Math.round(ji/54 * 100);
-    document.getElementById( 'ji' ).style.width = ji +'%';
+    document.getElementById( 'ji' ).style.width = 0 +'%';
+    tag(ji, 'ji');
 
     
 
@@ -110,25 +168,29 @@ function de_food(food_name){
         kal += kal_list[i];
     }
     kal = Math.round(kal/2300 * 100) ;
-    document.getElementById( 'kal' ).style.width = kal+'%';
+    //document.getElementById( 'kal' ).style.width = kal+'%';
+    tag_de(kal, 'kal')
     var tan = 0;
     for (let i = 0; i < tan_list.length; i++) {
         tan += tan_list[i];
     }
     tan = Math.round(tan/324 *100);
-    document.getElementById( 'tan' ).style.width = tan +'%';
+    //document.getElementById( 'tan' ).style.width = tan +'%';
+    tag_de(tan, 'tan')
     var dan = 0;
     for (let i = 0; i < dan_list.length; i++) {
         dan += dan_list[i];
     }
     dan = Math.round(dan/55 * 100);
-    document.getElementById( 'dan' ).style.width = dan +'%';
+    //document.getElementById( 'dan' ).style.width = dan +'%';
+    tag_de(dan, 'dan')
     var ji = 0;
     for (let i = 0; i < ji_list.length; i++) {
         ji += ji_list[i];
     }
     ji = Math.round(ji/54 * 100);
-    document.getElementById( 'ji' ).style.width = ji +'%';
+    //document.getElementById( 'ji' ).style.width = ji +'%';
+    tag_de(ji, 'ji')
 
     
 
@@ -155,25 +217,29 @@ function another_add_food(food_name){
         kal += kal_list[i];
     }
     kal = Math.round(kal/2300 * 100) ;
-    document.getElementById( 'kal' ).style.width = kal+'%';
+    //document.getElementById( 'kal' ).style.width = kal+'%';
+    tag(kal, 'kal')
     var tan = 0;
     for (let i = 0; i < tan_list.length; i++) {
         tan += tan_list[i];
     }
     tan = Math.round(tan/324 *100);
-    document.getElementById( 'tan' ).style.width = tan +'%';
+    //document.getElementById( 'tan' ).style.width = tan +'%';
+    tag(tan, 'tan')
     var dan = 0;
     for (let i = 0; i < dan_list.length; i++) {
         dan += dan_list[i];
     }
     dan = Math.round(dan/55 * 100);
-    document.getElementById( 'dan' ).style.width = dan +'%';
+    //document.getElementById( 'dan' ).style.width = dan +'%';
+    tag(dan, 'dan')
     var ji = 0;
     for (let i = 0; i < ji_list.length; i++) {
         ji += ji_list[i];
     }
     ji = Math.round(ji/54 * 100);
-    document.getElementById( 'ji' ).style.width = ji +'%';
+    //document.getElementById( 'ji' ).style.width = ji +'%';
+    tag(ji, 'ji')
 
     
 

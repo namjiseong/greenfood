@@ -156,13 +156,17 @@
 	<script>
         function avg_view(kal, tan, dan, ji){
 			kal = Math.round(kal/2300 * 100) ;
-			document.getElementById( 'avg_kal' ).style.width = kal+'%';
+			document.getElementById( 'avg_kal' ).style.width = 0+'%';
+			tag(kal, 'avg_kal')
 			tan = Math.round(tan/324 *100);
-			document.getElementById( 'avg_tan' ).style.width = tan +'%';
+			document.getElementById( 'avg_tan' ).style.width = 0 +'%';
+			tag(tan, 'avg_tan')
 			dan = Math.round(dan/55 * 100);
-			document.getElementById( 'avg_dan' ).style.width = dan +'%';
+			document.getElementById( 'avg_dan' ).style.width = 0 +'%';
+			tag(dan, 'avg_dan')
 			ji = Math.round(ji/54 * 100);
-			document.getElementById( 'avg_ji' ).style.width = ji +'%';
+			document.getElementById( 'avg_ji' ).style.width = 0 +'%';
+			tag(ji, 'avg_ji')
 
 			document.getElementById('avg_kal_p').innerHTML=kal + '%';
 			document.getElementById('avg_tan_p').innerHTML=tan+'%';
@@ -174,9 +178,12 @@
         
         
         function per(go, be, dag){
-            document.getElementById("go").style.width = go + '%';
-            document.getElementById("be").style.width = be + '%';
-            document.getElementById("dag").style.width = dag + '%';
+            document.getElementById("go").style.width = 0 + '%';
+			tag(go, 'go')
+            document.getElementById("be").style.width = 0 + '%';
+			tag(be, 'be')
+            document.getElementById("dag").style.width = 0 + '%';
+			tag(dag, 'dag')
             document.getElementById("go_p").innerHTML = go + "%";
             document.getElementById("be_p").innerHTML = be + "%";
             document.getElementById("dag_p").innerHTML = dag + "%";
