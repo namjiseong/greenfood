@@ -228,7 +228,7 @@
 			// 해당 날짜 DB에서 검색해서 퍼센트 띄우기
 			$.ajax({
 				type : 'POST',                                  
-				url : 'https://green-vungd.run-asia-northeast1.goorm.io/statistic',
+				url : 'http://127.0.0.1:5000/statistic',
 				data : {
 						date:date.value + ' 00:00:00'                     
 				},
@@ -247,10 +247,13 @@
 						for (var i=0; i < result.length;i++){
 							food_names.push(result[i][0]);
 							count.push(result[i][1]);
-							kal_list.push(result[i][2]);
-							tan_list.push(result[i][3]);
-							dan_list.push(result[i][4]);
-							ji_list.push(result[i][5]);
+							for (var j =0;j < result[i][1];j++){
+								kal_list.push(result[i][2]);
+								tan_list.push(result[i][3]);
+								dan_list.push(result[i][4]);
+								ji_list.push(result[i][5]);
+							}
+							
 						}
 						console.log(food_names)
 						console.log(count)
