@@ -102,6 +102,11 @@ html {
 	display: block;
 	padding: 10px 20px;
 }
+#id{
+	text-align: center;
+	display: block;
+	padding: 20px;
+}
 .wrap_gnb {
 	position: absolute;
 	top: 50%;

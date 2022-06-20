@@ -14,6 +14,7 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
+	
 </head>
 
 <body>
@@ -26,10 +27,11 @@
 						<img src="./static/images/img_logo.jpg" alt="그린푸드" class="img_g">
 					</a>
 				</h1>
-
+				
 				<nav class="wrap_gnb">
 					<ul class="list_gnb">
-						<li><a href="login">로그인</a></li>
+						<span id="id">{{id}}</span>
+						<li><a href="login" id="login">로그인</a></li>
 						<!-- <li><a href="#none">로그아웃</a></li> -->
 						<li><a href="#none">마이페이지</a></li>
 						<li><a href="statistic">통계</a></li>
@@ -127,6 +129,13 @@
 	</div>
 
 	<script>
+
+		
+		
+
+
+
+
 		function tag (end, tag) {
 			
 
@@ -154,6 +163,8 @@
 		tag(20, 'ji')
 		tag(45, 'dan')
 		
+
+
 	</script>
 
 </body>
