@@ -217,10 +217,10 @@ function another_add_food(food_name){
     // 타겟 인덱스 반환
     var index = list_f.indexOf(food_name);
     //2배로 증가
-    kal_list[index] = kal_list[index] * 2;
-    dan_list[index] = dan_list[index] * 2;
-    tan_list[index] = tan_list[index] * 2;
-    ji_list[index] = ji_list[index] * 2;
+    kal_list[index] += kal_list2[index] ;
+    dan_list[index] += dan_list2[index] ;
+    tan_list[index] += tan_list2[index] ;
+    ji_list[index] += ji_list2[index] ;
     //수정된 리스트 기반으로 퍼센트 표시
     var kal = 0;
     for (let i = 0; i < kal_list.length; i++) {
