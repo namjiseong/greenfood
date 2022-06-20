@@ -301,6 +301,12 @@ def test():
         return render_template('test.html', id=app.config['id'], avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji, go=go, be=be, dag=dag)
     return render_template('test.html', id=app.config['id'])
 
+
+@app.route('/logout', methods=('GET', 'POST'))
+def logout():
+    app.config['id'] = ""
+    return render_template('index.html', id=app.config['id'])
+
 if __name__ == '__main__':
     
     

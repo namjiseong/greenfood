@@ -1,3 +1,13 @@
+function logout(){
+    if (document.getElementById('id').innerHTML){
+        let login = document.getElementById('login')
+        login.href = "logout";
+        login.innerHTML = "로그아웃"
+        
+    }
+}
+
+
 //퍼센트 비율 갱신 함수
 function tag (end, tag) {
 			
@@ -260,3 +270,4 @@ function new_food(food_name){
     console.log(parent.getElementsByClassName('inp_search')[0].value);
     parent.getElementById('검색').submit();
 }
+

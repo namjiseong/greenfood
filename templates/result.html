@@ -7,7 +7,8 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
-	<script src="./static/js/common.ui.js" > </script>
+	<!-- <script src="./static/js/common.ui.js" > </script> -->
+	<script src="{{ url_for('static', filename='/js/common.ui.js') }}" > </script>
 	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 	<script>
 		
@@ -34,7 +35,7 @@
 				<nav class="wrap_gnb">
 					<ul class="list_gnb">
 						<span id="id">{{id}}</span>
-						<li><a href="login">로그인</a></li>
+						<li><a href="login" id="login">로그인</a></li>
 						<!-- <li><a href="#none">로그아웃</a></li> -->
 						<li><a href="#none">마이페이지</a></li>
 						<li><a href="statistic">통계</a></li>
@@ -209,7 +210,7 @@
 		
 
 
-
+		logout()
 
 	</script>
 	

@@ -31,7 +31,7 @@
 				<nav class="wrap_gnb">
 					<ul class="list_gnb">
 						<span id="id">{{id}}</span>
-						<li><a href="login">로그인</a></li>
+						<li><a href="login" id="login">로그인</a></li>
 						<li><a href="#none">마이페이지</a></li>
 						<li><a href="statistic">통계</a></li>
 					</ul>
@@ -155,6 +155,8 @@
 		</footer>
 	</div>
 	<script>
+		
+
         function avg_view(kal, tan, dan, ji){
 			kal = Math.round(kal/2300 * 100) ;
 			document.getElementById( 'avg_kal' ).style.width = 0+'%';
@@ -192,7 +194,7 @@
         per({{go}}, {{be}}, {{dag}});
 
 
-
+		logout()
     </script>
 </body>
 
