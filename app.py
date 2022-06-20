@@ -108,7 +108,7 @@ def recommend():
         p_list = request.form['p_list']
         p_list = list(map(int, p_list.split()))
         for i in range(len(p_list)):
-            p_list[i] = 66 - p_list[i]
+            p_list[i] = 100 - p_list[i]
             # 33기준으로 퍼센트 변환
         # 칼로리 1% = 23 탄수화물 1% =3.24 단백질 1% = 0.55 지방 1% = 0.54
         p_list[0] = p_list[0] * 23
@@ -277,8 +277,8 @@ def date_add():
             
             #DB에 저장
             curs = conn.cursor()
-            sql="insert into date_food values(\'"+app.config['id']+"\', \'"+ datetime.today().strftime("%Y-%m-%d") +"\', \'"+date_food_list[i]+"\', "+date_count_list[i]+");"
-            
+            sql="insert into date_food values(\'"+app.config['id']+"\', \'"+ datetime.today().strftime("%Y-%m-%d 00:00:00") +"\', \'"+date_food_list[i]+"\', "+date_count_list[i]+");"
+            print(datetime.today().strftime("%Y-%m-%d 00:00:00"))
             
             conn.ping()
             curs.execute(sql)
