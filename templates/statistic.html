@@ -7,7 +7,7 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	<script src="./static/js/common.ui.js" > </script>
 	<script>
 		var kal_list = []
@@ -228,9 +228,9 @@
 			// 해당 날짜 DB에서 검색해서 퍼센트 띄우기
 			$.ajax({
 				type : 'POST',                                  
-				url : 'http://127.0.0.1:5000/statistic',
+				url : 'https://green-vungd.run-asia-northeast1.goorm.io/statistic',
 				data : {
-						date:date.value                       
+						date:date.value + ' 00:00:00'                     
 				},
 				dataType : 'JSON',
 				contentType: 'application/x-www-form-urlencoded; charset=euc-kr',
