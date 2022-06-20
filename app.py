@@ -52,9 +52,10 @@ def index():
   
   
   
-@app.route('/result') # 접속하는 url
+@app.route('/result', methods=('GET', 'POST')) # 접속하는 url
 def result():
-    return render_template('result.html', id=app.config['id'])
+    
+    return render_template('result.html', id=app.config['id'], Img = 'images/img_food.jpg', food_list = [], kal_list = [], tan_list=[], dan_list=[], ji_list=[])
 
 @app.route('/add', methods=['POST']) # 접속하는 url
 def add():
