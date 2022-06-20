@@ -1,4 +1,4 @@
-from msilib.schema import Environment
+#from msilib.schema import Environment
 from tabnanny import filename_only
 from flask import Flask, render_template, request, flash, jsonify
 from werkzeug.utils import secure_filename
@@ -16,7 +16,7 @@ import pandas as pd
 import numpy as np
 
 #DB선언
-conn = pymysql.connect(host='localhost', user="root", password="qsdrwe159", db='food_data', charset='utf8')
+conn = pymysql.connect(host='jiseongdb.cthzjzmgoiad.ap-northeast-2.rds.amazonaws.com', user="admin", password="qsdrwe159", db='food_data', charset='utf8')
 
 
 app = Flask(__name__)
