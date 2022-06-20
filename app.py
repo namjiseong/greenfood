@@ -41,20 +41,20 @@ def index():
         except Exception as e:
             flash('인식 실패')
             print(e)
-            return render_template('index.html')
-        return render_template('result.html', Img = 'images/'+Img.filename, food_list = answer[0], kal_list = answer[1], tan_list=answer[2], dan_list=answer[3], ji_list=answer[4])
+            return render_template('index.html', id=app.config['id'])
+        return render_template('result.html', id=app.config['id'], Img = 'images/'+Img.filename, food_list = answer[0], kal_list = answer[1], tan_list=answer[2], dan_list=answer[3], ji_list=answer[4])
         ###
     
         
-      
-    return render_template('index.html')
+    print(app.config['id'])
+    return render_template('index.html', id=app.config['id'])
   
   
   
   
 @app.route('/result') # 접속하는 url
 def result():
-    return render_template('result.html')
+    return render_template('result.html', id=app.config['id'])
 
 @app.route('/add', methods=['POST']) # 접속하는 url
 def add():
@@ -99,7 +99,7 @@ def add():
                 food_list.append(rows[0][4])
         
         
-        return render_template('result.html', Img =Img, food_list = food_list, kal_list = kal, tan_list=tan, dan_list=dan, ji_list=ji)
+        return render_template('result.html', id=app.config['id'], Img =Img, food_list = food_list, kal_list = kal, tan_list=tan, dan_list=dan, ji_list=ji)
 
 @app.route('/recommend', methods=['POST']) # 접속하는 url
 def recommend():
@@ -132,8 +132,8 @@ def recommend():
             
             random.shuffle(reco)
             print(reco[0][4])
-            return render_template('comfirm.html', food_name = reco[0][4])
-    return render_template('comfirm.html')
+            return render_template('comfirm.html', id=app.config['id'], food_name = reco[0][4])
+    return render_template('comfirm.html', id=app.config['id'])
 
 @app.route('/login', methods=('GET', 'POST')) # 접속하는 url
 def login():
@@ -152,7 +152,8 @@ def login():
                 print('로그인 성공')
                 flash('로그인 성공')
                 app.config['id'] = id
-                return render_template('index.html')
+                print(app.config['id'])
+                return render_template('index.html', id=app.config['id'])
         else:
             print('로그인 실패')
             flash('로그인 실패')
@@ -175,7 +176,7 @@ def join():
         curs.execute(sql)
         conn.commit() # 실제 DB에 적용
         
-        return render_template('index.html')
+        return render_template('index.html', id=app.config['id'])
     return render_template('join.html')
 
 
@@ -228,7 +229,7 @@ def statistic():
         divi = len(rows)
         if divi == 0:
             flash('통계 자료 없음')
-            return render_template('index.html')
+            return render_template('index.html', id=app.config['id'])
         else:
               
             avg_kal = sum_kal/divi
@@ -256,10 +257,10 @@ def statistic():
         per = [int(go_p[0][1] * 100), int(be_p[0][1] * 100), int(dag_p[0][1] * 100)]
         
         
-        return render_template('statistic.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji, per = per)
+        return render_template('statistic.html', id=app.config['id'], avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji, per = per)
     else:
         flash('로그인이 필요합니다')
-        return render_template('index.html')
+        return render_template('index.html', id=app.config['id'])
 
 @app.route('/date_add', methods=('GET', 'POST')) # 접속하는 url
 def date_add():
@@ -283,10 +284,10 @@ def date_add():
             conn.commit() # 실제 DB에 적용
         
         flash('통계 저장 성공')
-        return render_template('index.html')
+        return render_template('index.html', id=app.config['id'])
     else:
         flash('로그인이 필요합니다')
-        return render_template('index.html')
+        return render_template('index.html', id=app.config['id'])
         
 
 
@@ -297,8 +298,14 @@ def test():
         go, be, dag = map(int, request.form['per_list'].split(","))
         print(request.form['avg_list'])
         avg_kal, avg_tan, avg_dan, avg_ji = map(float, request.form['avg_list'].split(','))
-        return render_template('test.html', avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji, go=go, be=be, dag=dag)
-    return render_template('test.html')
+        return render_template('test.html', id=app.config['id'], avg_kal = avg_kal, avg_tan = avg_tan, avg_dan = avg_dan, avg_ji = avg_ji, go=go, be=be, dag=dag)
+    return render_template('test.html', id=app.config['id'])
+
+
+@app.route('/logout', methods=('GET', 'POST'))
+def logout():
+    app.config['id'] = ""
+    return render_template('index.html', id=app.config['id'])
 
 if __name__ == '__main__':
     
