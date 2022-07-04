@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>Greenfood</title>
 	<link rel="stylesheet" href="./static/css/common.css">
@@ -63,6 +63,7 @@
 						<div class="field_row">
 							<span class="tit_inp">날짜 선택 : </span>
 							<input type="date" name="" id="date" class="inp_date" onchange="view_date()">
+							
 						</div>
 
 						
@@ -229,7 +230,7 @@
 			// 해당 날짜 DB에서 검색해서 퍼센트 띄우기
 			$.ajax({
 				type : 'POST',                                  
-				url : 'https://00f3-49-175-24-22.jp.ngrok.io/statistic',
+				url : 'statistic',
 				data : {
 						date:date.value + ' 00:00:00'                     
 				},

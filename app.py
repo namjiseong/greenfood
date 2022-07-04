@@ -191,12 +191,10 @@ def statistic():
         curs = conn.cursor()
         
         if request.method == "POST":
-            print(request.form['date'])
-            # DB에서 찾아서 json으로 리턴
-            box = []
             
-            sql="select food_name, count from date_food where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\';"
-            sql = "select food_name, count, 칼로리, 탄수화물, 단백질, 지방 FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\' and date_food.food_name=food_data.음식명;"
+            
+            #sql="select food_name, count from date_food where now_id=\'"+app.config['id']+"\' and  date_time=\'"+request.form['date']+"\';"
+            sql = "select food_name, count, 칼로리, 탄수화물, 단백질, 지방 FROM date_food, food_data where now_id=\'"+app.config['id']+"\' and  date_time=\'"+datetime.today().strftime("%Y-%m-%d 00:00:00")+"\' and date_food.food_name=food_data.음식명;"
             conn.ping()
             curs.execute(sql)
             rows = curs.fetchall()
